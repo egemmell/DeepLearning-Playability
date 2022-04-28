@@ -1,5 +1,15 @@
 .App {
   text-align: center;
+  background-color: #ffffff;
+}
+
+.UBC {
+  text-align: left;
+  background-color: white;
+}
+
+.UBClogo {
+  height: 100px;
 }
 
 .App-logo {

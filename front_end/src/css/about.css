@@ -1,0 +1,51 @@
+.infosheet{
+    align-items: center;
+}
+
+h2 {
+    text-align: center;
+    margin-left: 12px;
+    font-family: "Open Sans", sans-serif;
+    margin-bottom: 10px;
+}
+
+h3 {
+    text-align: left;
+    margin-left: 12px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+}
+
+h4 {
+    color: rgb(0, 0, 0);
+    display: block;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    text-align: left;
+    justify-content: center;
+    margin-block-end: 14px;
+    margin-block-start: 14px;
+    margin-inline-end: 0px;
+    margin-inline-start: 0px;
+    margin-top: 40px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+    width: 750px;
+
+}
+
+p {
+    color: rgb(0, 0, 0);
+    display: block;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    text-align: left;
+    justify-content: center;
+    margin-block-end: 14px;
+    margin-block-start: 14px;
+    margin-inline-end: 0px;
+    margin-inline-start: 0px;
+    margin-left: 20px;
+    width: 750px;
+    
+}

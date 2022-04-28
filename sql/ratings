@@ -21,7 +21,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: perceptions; Type: TABLE; Schema: users; Owner: emily
+-- Name: perceptions; Type: TABLE; Schema: users; Owner: ishmamchoudhury
 --
 
 CREATE TABLE users.perceptions (
@@ -34,10 +34,10 @@ CREATE TABLE users.perceptions (
 );
 
 
-ALTER TABLE users.perceptions OWNER TO emily;
+ALTER TABLE users.perceptions OWNER TO ishmamchoudhury;
 
 --
--- Data for Name: perceptions; Type: TABLE DATA; Schema: users; Owner: emily
+-- Data for Name: perceptions; Type: TABLE DATA; Schema: users; Owner: ishmamchoudhury
 --
 
 COPY users.perceptions (img_1, img_2, perception, choice, user_id, "time") FROM stdin;

@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import Contact from "./Contact"
-import Home from "./Home"
+import Contact from "./components/Contact"
+import Home from "./components/Home"
+require('dotenv').config({path: '../.env'});
 
 function Images(props) {
   const host = process.env.REACT_APP_BACK_END_HOST;
   const port = process.env.REACT_APP_BACK_END_PORT;
-  const [api, setApi] = useState(process.env.REACT_APP_API_KEY);
+  const [api, setApi] = useState(window.REACT_APP_API_KEY);
+  //this part was changed
+  //const [api, setApi] = useState('AIzaSyALVKYf0D3HQzTj0sEuBJzeoqbo5tXqgTE');
 
   const [cache, setCache] = useState(0);
   const [userId, setUserId] = useState(uuidv4());
