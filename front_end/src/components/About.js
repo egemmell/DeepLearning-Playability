@@ -4,6 +4,7 @@ import "../css/about.css";
 const About = () => {
 return (
 	<div class='infosheet'>
+		<form className='info-form' id='info-form'>
 		<h2>Assessing child and parent perceptions of neighbourhoods for children’s outdoor play 
 			Participant Information Sheet </h2>
 		<h4>
@@ -55,7 +56,7 @@ return (
 		If you have any further questions, please contact Emily Gemmell at <a href="mailto:emily.gemmell@ubc.ca">emily.gemmell@ubc.ca</a>.</p>
 
 		<h4>Thank you for your interest in our study!</h4>
-
+		</form>
 	</div>
     
 );

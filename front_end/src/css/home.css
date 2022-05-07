@@ -1,0 +1,54 @@
+form{
+    background-color: #fff;
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 30px 20px;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+    overflow-wrap: break-word;
+}
+
+.home--shell {
+    word-wrap: break-word
+}
+ 
+.link-to-surveys {
+    display: flex;
+    align-items: center;
+    margin-top: 100px;
+    justify-content: center;
+}
+
+.parent-survey {
+    width: 500px;
+    justify-content: center
+}
+.child-assent {
+    width: 500px;
+    justify-content: center
+}
+
+.info-links {
+    align-items: center;
+    /* width: 400px; */
+}
+
+.survey-button {
+    display: block;
+    margin-left: 130px
+    
+}
+
+/* style={{ display: 'flex'}} */
+/* //</form>, columnGap: '1rem' }}> */
+
+/* Styling Button */
+/* button {
+    background-color: #05c46b;
+    border: 1px solid #777;
+    border-radius: 2px;
+    font-family: inherit;
+    font-size: 21px;
+    display: block;
+    margin-top: 50px;
+    margin-bottom: 20px;
+} */
