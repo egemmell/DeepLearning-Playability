@@ -1,0 +1,36 @@
+.h4-tag {
+    padding-left: 310px;
+    text-align: center;
+}
+
+.button-yes {
+    border: 1.5px solid rgb(0, 94, 14);
+    background-color: rgb(27, 204, 0);
+    color: black;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 20px;
+    margin: 25px;
+    position: relative;
+    right: 18px
+    /* right: 90px; */
+}
+.button-no {
+    border: 1.5px solid rgb(51, 0, 0);
+    background-color: rgb(249, 21, 21);
+    color: black;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 20px;
+    margin: 25px;
+    position: relative;
+    right: 18px
+}
+
+.fa-3x {
+    vertical-align: middle;
+}

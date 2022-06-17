@@ -10,7 +10,7 @@ export default function Navbar() {
 
   return (
     <nav className="navigation">
-      <a href="/" className="brand-name">
+      <a href="#" className="brand-name">
         Assessing Child and Parent Perception Study 
       </a>
       {/* hamburger hasnt been used yet, the work is to show a dropdown button when the size reduces */}
@@ -42,7 +42,7 @@ export default function Navbar() {
         {/* calling */}
       <ul>
         <li>
-          <a href="/Home">Home</a>
+          <a href="/">Home</a>
         </li>
         <li>
           <a href="/About">About</a>
@@ -50,6 +50,9 @@ export default function Navbar() {
         <li>
           <a href="/Contact">Contact</a>
         </li>
+        {/* <li>
+          <a href="/Images">Images</a>
+        </li> */}
       </ul>
       </div>
     </nav>

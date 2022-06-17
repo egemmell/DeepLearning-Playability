@@ -6,6 +6,8 @@ import ModalTwo from './ModalTwo';
 import ModalManager from "./ModalManager";
 import {Link} from 'react-router-dom';
 import About from "./About";
+import ChildAssent from "./ChildAssent"
+import Images from "../Images"
 import "../css/home.css"
 
 
@@ -24,29 +26,37 @@ function Home() {
     setModal('')
   }
 
+  // function refreshPage() {
+  //   window.location.reload(false);
+  // }
+
   return (
+    
     <div className="home--shell">
       <form className='consent-form' id='consent-form'>
         <div className='form-info'>
           <h2>Assessing child and parent perceptions of neighbourhoods for children’s outdoor play</h2>
-          <p>Thank you for visiting our survey!</p>
-            <p>If you are a parent or guardian of a 0-12 year old child living in Canada, we want to understand how you view neighbourhood environments for children’s outdoor play! </p>
-            <p>We would also love to hear from your 5-12 year old child about what kinds of neighbourhoods they consider to be playable. </p>
-            <p>We hope that this research can help cities understand the types of neighbourhoods parents and children consider to be supportive of children’s outdoor play. </p>
-            <p>Before consenting to either your or your child’s participation, please review the participant information <Link to="/About">sheet</Link> for more details about this study. </p>
-            <h4>By clicking the link below, you confirm the following statements and consent to participate in this research.</h4>
-            <p>I am a parent or guardian of a 0-12 year old child and live in Canada.</p>
-            <p>I have reviewed the participant information sheet.</p>
+          <p className='top-1p'>Thank you for visiting our survey!</p>
+            <p className='top-p'>If you are a parent or guardian of a 0-12 year old child living in Canada, we want to understand how you view neighbourhood environments for children’s outdoor play! </p>
+            <p className='top-p'>This research can help cities understand the types of neighbourhoods that are supportive of children’s outdoor play. </p>
+            <p className='top-p'>Before consenting to either your or your child’s participation, please review the <a href='/About'>participant information sheet</a> for more details about this study. </p>
+            <h4 className='top-p'>By clicking the link below, you confirm the following statements and consent to participate in this research.</h4>
+            <li className='list'><em>I am a parent or guardian of a 0-12 year old child and live in Canada.</em></li>
+            <li className='list'><em>I have reviewed the participant information sheet.</em></li>
         </div>
 
         <div className='link-to-surveys'>
           <div className='parent-survey'>
             <p className='survey'>Yes, I would like to participate in this survey!</p>
-            <button type='submit' className="survey-button">Survey</button>
+            <a href="./Home" className="survey-button">Start Test</a>
+            
           </div>
-
+          <div className='child-assent'>
+            <p className='survey'>Yes, I consent to my 5-12 year old child participating in this survey!</p>
+            <a href="./ChildAssent" className="survey-button1">Child Survey Assent</a>
+          </div>
           {/* Simplying with modal manager */}
-          <div className='child-assent' onClick={openModal}>
+          {/* <div className='child-assent' onClick={openModal}>
             <main className="app--screen screen--one">
                 <p>Yes, I consent to my 5-12 year old child participating in this survey!</p>
                 <button type="button" data-modal="modal-one">
@@ -54,8 +64,9 @@ function Home() {
                 </button>
             </main>
             <ModalManager closeFn={closeModal} modal={modalOpen}/>
-          </div>
+          </div> */}
         </div>
+        <h4 className='bottom-h4'>If you do not wish to participate, you may exit here.</h4>
       </form>
       
     {/* Youtube video API render */}

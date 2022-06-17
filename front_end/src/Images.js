@@ -56,7 +56,9 @@ function Images(props) {
 
   return (
     <div className="App">
-      <p>Images</p>
+      <p>Images1</p>
+      <p>Images2</p>
+      {console.log("EEEE")}
       {console.log(props.meta)}
       <Row className='page'>
                 <div class="col-lg-4 offset-lg-1 col-md-4 offset-md-1 p-1">

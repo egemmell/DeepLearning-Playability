@@ -6,14 +6,15 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import ModalManager from "./components/ModalManager";
 import Navbar from "./components/Navbar";
-import logo from "./images/ubc_logo.jpg";
+import logo from "./posts/ubc_logo.jpg";
 import "./css/App.css";
+import ChildAssent from "./components/ChildAssent";
 require('dotenv').config({path: '../.env'});
 
 
 function App() {
 
-  // const [view, setView] = useState(2);
+  const [view, setView] = useState(2);
   const [meta, setMeta] = useState({ meta: 'aaa' });
   //const [show, setShow] = useState(false)
 
@@ -74,23 +75,29 @@ function App() {
       <Navbar/>
       {/* <ModalManager closeFn={closeModal} modal={modalOpen}/> */}
         <Routes>
-          <Route exact path='/home' element={<Home/>}>
+          <Route exact path='/' element={<Home/>}>
           </Route>
           <Route path='/about' element={<About/>}>
           </Route>
           <Route exact path='/contact' element={<Contact/>}>
           </Route>
+          <Route exact path='/images' element={<Images/>}>
+          </Route>
+          <Route exact path='/ChildAssent' element={<ChildAssent/>}>
+          </Route>
         </Routes>
-        
+        {/* <Link to="/images">
+            <button>Click Me!</button>
+        </Link> */}
       </Router>
 
       {/* with setview. */}
-      {/* <p>perceptions</p> */}
+      <p>perceptions</p>
       {/* <button onClick={() => setView(0)}>contactInfo</button> */}
-      {/* <button onClick={() => { setView(1); fetchImage() }}>images</button> */}
+      <button onClick={() => { setView(1); fetchImage() }}>images</button>
       {/* <button onClick={() => setView(2)}>home</button> */}
       {/* { view === 0 ? <Contact/> : null} */}
-      {/* { view === 1 ? <Images setView={setView} fetchImage={fetchImage} meta={meta} /> : null} */}
+      { view === 1 ? <Images setView={setView} fetchImage={fetchImage} meta={meta} /> : null}
       {/* { view === 2 ? <Home setView={setView}/> : null} */}
 
       {/* <div className="ChildSection">
@@ -100,10 +107,7 @@ function App() {
       <button onClick={() => setShow(true) }>Show Modal Child</button>
       </div>
       <Modal onClose= {() => setShow(false)} show={show} /> */}
-
     </div>
-
-    
   );
 }
 export default App;
