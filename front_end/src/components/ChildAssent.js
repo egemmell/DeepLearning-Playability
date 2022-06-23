@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import video from './child-video.mp4'
+import video from '../videos/child-video2.mp4'
 import "../css/childassent.css"
 function ChildAssent() {
 
@@ -22,7 +22,7 @@ function ChildAssent() {
         </div>
         <div className="child-survey-button" style={{ display: isVisible ? "block" : "none" }}>
             <h4 className='h4-tag'>Do you want to complete the survey?</h4>
-            <a href="/images" className="button-yes"> 
+            <a href="/survey" className="button-yes"> 
                 <i class="fas fa-thumbs-up fa-3x"></i>
             </a>
             <a href="/" className="button-no">

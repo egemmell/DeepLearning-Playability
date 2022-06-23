@@ -1,7 +1,9 @@
 import {useState} from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Images from "./Images"
-import Home from "./components/Home"
+import Home from "./components/Home";
+import SurveyPage from "./components/SurveyPage";
+import ParentInfo from "./components/ParentInfo";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import ModalManager from "./components/ModalManager";
@@ -18,21 +20,21 @@ function App() {
   const [meta, setMeta] = useState({ meta: 'aaa' });
   //const [show, setShow] = useState(false)
 
-  const [modalOpen, setModal] = useState(false);
+  //const [modalOpen, setModal] = useState(false);
 
-  const openModal = event => {
-    event.preventDefault();
-    const {
-      target: {
-        dataset: { modal }
-      }
-    } = event;
-    if (modal) setModal(modal);
-  };
+  // const openModal = event => {
+  //   event.preventDefault();
+  //   const {
+  //     target: {
+  //       dataset: { modal }
+  //     }
+  //   } = event;
+  //   if (modal) setModal(modal);
+  // };
 
-  const closeModal = () => {
-    setModal('');
-  };
+  // const closeModal = () => {
+  //   setModal('');
+  // };
 
 
   const host = process.env.REACT_APP_BACK_END_HOST;
@@ -85,6 +87,10 @@ function App() {
           </Route>
           <Route exact path='/ChildAssent' element={<ChildAssent/>}>
           </Route>
+          <Route exact path='/survey' element={<SurveyPage/>}>
+          </Route>
+          <Route exact path='/demographics' element={<ParentInfo/>}>
+          </Route>
         </Routes>
         {/* <Link to="/images">
             <button>Click Me!</button>
@@ -92,12 +98,12 @@ function App() {
       </Router>
 
       {/* with setview. */}
-      <p>perceptions</p>
+      {/* <p>perceptions</p> */}
       {/* <button onClick={() => setView(0)}>contactInfo</button> */}
-      <button onClick={() => { setView(1); fetchImage() }}>images</button>
+      {/* <button onClick={() => { setView(1); fetchImage() }}>images</button> */}
       {/* <button onClick={() => setView(2)}>home</button> */}
       {/* { view === 0 ? <Contact/> : null} */}
-      { view === 1 ? <Images setView={setView} fetchImage={fetchImage} meta={meta} /> : null}
+      {/* { view === 1 ? <Images setView={setView} fetchImage={fetchImage} meta={meta} /> : null} */}
       {/* { view === 2 ? <Home setView={setView}/> : null} */}
 
       {/* <div className="ChildSection">

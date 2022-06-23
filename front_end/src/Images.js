@@ -8,12 +8,14 @@ require('dotenv').config({path: '../.env'});
 function Images(props) {
   const host = process.env.REACT_APP_BACK_END_HOST;
   const port = process.env.REACT_APP_BACK_END_PORT;
-  const [api, setApi] = useState(window.REACT_APP_API_KEY);
+  //const [api, setApi] = useState(window.REACT_APP_API_KEY);
   //this part was changed
-  //const [api, setApi] = useState('AIzaSyALVKYf0D3HQzTj0sEuBJzeoqbo5tXqgTE');
+  const [api, setApi] = useState('AIzaSyALVKYf0D3HQzTj0sEuBJzeoqbo5tXqgTE');
 
   const [cache, setCache] = useState(0);
   const [userId, setUserId] = useState(uuidv4());
+////*** */
+  const [meta, setMeta] = useState({ meta: 'aaa' });
 
   const date = () => {
     return String(Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(Date.now()))
@@ -35,13 +37,41 @@ function Images(props) {
         }
       )
     };
-    fetch('http://' + host + ':5000/post_data', requestOptions)
+    fetch('http://localhost:5000/post_data', requestOptions)
       .then(response => response.json())
+  };
+
+///***** */
+  const fetchImage = () => {
+    const requestOptions = {
+      method: 'GET',
+      //header: { 'Content-Type': 'application/json'}
+      header: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:5000/get_data', 'Accept': 'application/json' }
+    };
+    //fetch('http://' + host + ':' + port + '/get_data', requestOptions)
+    //this part was changed
+    fetch('http://localhost:5000/get_data', requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        setMeta({
+          meta: result.map(item => ({
+            panoid: item[0],
+            month: item[1],
+            idx: item[2],
+            angle: item[3],
+            head: item[4],
+            cluster: item[5],
+            pp: item[6],
+            pp_float: item[8]
+          }))
+        });
+      });
   };
 
   // render image using API
   const img_html = (panoid, head) => {
     var heady = Math.round(head);
+    console.log(panoid)
     return `https://maps.googleapis.com/maps/api/streetview?size=640x640&pano=${panoid}&fov=120&heading=${heady}&pitch=0&key=${api}`
   };
 
@@ -50,6 +80,7 @@ function Images(props) {
     setCache(cache + 2);
     if ((cache + 2) % 10 === 0) {
         props.fetchImage();
+        //props.fetchImage();
         setCache(0);
     }
 };
@@ -58,8 +89,9 @@ function Images(props) {
     <div className="App">
       <p>Images1</p>
       <p>Images2</p>
-      {console.log("EEEE")}
-      {console.log(props.meta)}
+      {/* {console.log("If props works", props.meta)} */}
+      {console.log("Just meta", meta, props.meta.meta[cache].panoid)}
+      
       <Row className='page'>
                 <div class="col-lg-4 offset-lg-1 col-md-4 offset-md-1 p-1">
                     <img className='images' onClick={() => { submit(props.meta.meta[cache].idx, props.meta.meta[cache + 1].idx, 'choice', props.meta.meta[cache].idx, userId); updates() }} src={img_html(props.meta.meta[cache].panoid, props.meta.meta[cache].head)} alt='image not loaded' />

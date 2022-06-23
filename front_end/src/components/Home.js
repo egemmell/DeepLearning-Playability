@@ -16,15 +16,15 @@ function Home() {
   //Operate Modals fucntions
   const [modalOpen, setModal] = useState(false)
 
-  const openModal = event => {
-    event.preventDefault() 
-    const { target: { dataset: { modal }}} = event
-    if (modal) setModal (modal)
-  }
+  // const openModal = event => {
+  //   event.preventDefault() 
+  //   const { target: { dataset: { modal }}} = event
+  //   if (modal) setModal (modal)
+  // }
 
-  const closeModal = () => {
-    setModal('')
-  }
+  // const closeModal = () => {
+  //   setModal('')
+  // }
 
   // function refreshPage() {
   //   window.location.reload(false);
@@ -48,7 +48,7 @@ function Home() {
         <div className='link-to-surveys'>
           <div className='parent-survey'>
             <p className='survey'>Yes, I would like to participate in this survey!</p>
-            <a href="./Home" className="survey-button">Start Test</a>
+            <a href="./demographics" className="survey-button">Start Test</a>
             
           </div>
           <div className='child-assent'>
