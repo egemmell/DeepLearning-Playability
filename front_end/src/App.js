@@ -1,8 +1,7 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Images from "./Images"
 import Home from "./components/Home";
-import SurveyPage from "./components/SurveyPage";
 import ParentInfo from "./components/ParentInfo";
 import About from "./components/About";
 import Contact from "./components/Contact";
@@ -10,14 +9,18 @@ import ModalManager from "./components/ModalManager";
 import Navbar from "./components/Navbar";
 import logo from "./posts/ubc_logo.jpg";
 import "./css/App.css";
+import { v4 as uuidv4 } from 'uuid';
 import ChildAssent from "./components/ChildAssent";
 require('dotenv').config({path: '../.env'});
 
 
 function App() {
 
-  const [view, setView] = useState(2);
   const [meta, setMeta] = useState({ meta: 'aaa' });
+  const [userId, setUserId] = useState(uuidv4());
+  useEffect(() => {
+    fetchImage();
+  }, [])
   //const [show, setShow] = useState(false)
 
   //const [modalOpen, setModal] = useState(false);
@@ -49,7 +52,7 @@ function App() {
     };
     //fetch('http://' + host + ':' + port + '/get_data', requestOptions)
     //this part was changed
-    fetch('http://localhost:5000/get_data', requestOptions)
+    fetch('http://' + host + ':' + port + '/get_data', requestOptions)
       .then(response => response.json())
       .then(result => {
         setMeta({
@@ -83,11 +86,9 @@ function App() {
           </Route>
           <Route exact path='/contact' element={<Contact/>}>
           </Route>
-          <Route exact path='/images' element={<Images/>}>
+          <Route exact path='/images' element={<Images fetchImage={fetchImage} meta={meta} userId={userId}/>}>
           </Route>
           <Route exact path='/ChildAssent' element={<ChildAssent/>}>
-          </Route>
-          <Route exact path='/survey' element={<SurveyPage/>}>
           </Route>
           <Route exact path='/demographics' element={<ParentInfo/>}>
           </Route>

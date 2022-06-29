@@ -1,5 +1,7 @@
-import React, { useState} from 'react';
+import React, {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 require('dotenv').config({path: '../../.env'});
+
 
 function ParentInfo(props) {
     const host = process.env.REACT_APP_BACK_END_HOST;
@@ -8,6 +10,8 @@ function ParentInfo(props) {
     const [age, setAge] = useState('')
     const [postalcode, setPC] = useState('')
     const [childage, setChildAge] = useState('')
+
+    const navigate = useNavigate();
 
     const InsertArticle = (body) => {
         return fetch('http://localhost:5000/post_credential', {
@@ -37,9 +41,18 @@ function ParentInfo(props) {
         setChildAge('')
     }
 
+    const rootNavigateImages = () => {
+      // 👇️ navigate to /contacts
+      navigate('/images');
+        // fetchImage: fetchImage(),
+        // meta: meta,
+    
+    //{<Images fetchImage={fetchImage} meta={meta}/>}
+    };
+
 return (
     <div className='demographic'>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={ handleSubmit && rootNavigateImages}>
             <h2>Please fillout the demographics before you proceed to the survey</h2>
             <label className="demo-label" for="gender">Gender:</label>
             <input type="text" className='form-control' 
@@ -56,8 +69,9 @@ return (
             <label className="demo-label" for="childage">If your child is participating, how old is your child?</label>
             <input type="text" className='form-control'
             value={childage} onChange={(e)=>setChildAge(e.target.value)}/>
-
-            <a href="/survey">Next</a>
+            {/* <button onClick={()=> {rootNavigateImages()}}>Next</button> */}
+            {/* <a oncl></a> */}
+            <button > Next </button>
         </form>
     </div>
 

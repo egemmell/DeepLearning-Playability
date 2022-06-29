@@ -10,10 +10,10 @@ function Images(props) {
   const port = process.env.REACT_APP_BACK_END_PORT;
   //const [api, setApi] = useState(window.REACT_APP_API_KEY);
   //this part was changed
-  const [api, setApi] = useState('AIzaSyALVKYf0D3HQzTj0sEuBJzeoqbo5tXqgTE');
+  const [api, setApi] = useState(process.env.REACT_APP_API_KEY);
 
   const [cache, setCache] = useState(0);
-  const [userId, setUserId] = useState(uuidv4());
+  //const [userId, setUserId] = useState(uuidv4());
 ////*** */
   const [meta, setMeta] = useState({ meta: 'aaa' });
 
@@ -24,7 +24,7 @@ function Images(props) {
   const submit = (img_1, img_2, perception, choice, user_id) => {
     const requestOptions = {
       method: 'POST',
-      header: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://' + host + ':5000/post_data', 'Accept': 'application/json' },
+      header: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://' + host + ':' + port + '/post_data', 'Accept': 'application/json' },
       mode: 'cors',
       body: JSON.stringify(
         {
@@ -37,35 +37,8 @@ function Images(props) {
         }
       )
     };
-    fetch('http://localhost:5000/post_data', requestOptions)
+    fetch('http://' + host + ':' + port + '/post_data', requestOptions)
       .then(response => response.json())
-  };
-
-///***** */
-  const fetchImage = () => {
-    const requestOptions = {
-      method: 'GET',
-      //header: { 'Content-Type': 'application/json'}
-      header: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:5000/get_data', 'Accept': 'application/json' }
-    };
-    //fetch('http://' + host + ':' + port + '/get_data', requestOptions)
-    //this part was changed
-    fetch('http://localhost:5000/get_data', requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        setMeta({
-          meta: result.map(item => ({
-            panoid: item[0],
-            month: item[1],
-            idx: item[2],
-            angle: item[3],
-            head: item[4],
-            cluster: item[5],
-            pp: item[6],
-            pp_float: item[8]
-          }))
-        });
-      });
   };
 
   // render image using API
@@ -94,16 +67,16 @@ function Images(props) {
       
       <Row className='page'>
                 <div class="col-lg-4 offset-lg-1 col-md-4 offset-md-1 p-1">
-                    <img className='images' onClick={() => { submit(props.meta.meta[cache].idx, props.meta.meta[cache + 1].idx, 'choice', props.meta.meta[cache].idx, userId); updates() }} src={img_html(props.meta.meta[cache].panoid, props.meta.meta[cache].head)} alt='image not loaded' />
+                    <img className='images' onClick={() => { submit(props.meta.meta[cache].idx, props.meta.meta[cache + 1].idx, 'choice', props.meta.meta[cache].idx, props.userId); updates() }} src={img_html(props.meta.meta[cache].panoid, props.meta.meta[cache].head)} alt='image not loaded' />
                 </div>
                 <div class="col-lg-2 offset-lg-0 col-md-2 offset-md-0">
-                    <Button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '1', userId); updates() }}>≈ Roughly Equal</Button>
-                    <Button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '0', userId); updates() }}>x Not Comparable</Button>
-                    <Button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '2', userId); updates() }}>Image not shown</Button>
+                    <Button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '1', props.userId); updates() }}>≈ Roughly Equal</Button>
+                    <Button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '0', props.userId); updates() }}>x Not Comparable</Button>
+                    <Button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '2', props.userId); updates() }}>Image not shown</Button>
                 </div>
                 
                 <div class="col-lg-4 offset-lg-0 col-md-4 p-1">
-                    <img className='images' onClick={() => { submit(props.meta.meta[cache].idx, props.meta.meta[cache + 1].idx, 'choice', props.meta.meta[cache + 1].idx, userId); updates() }} src={img_html(props.meta.meta[cache + 1].panoid, props.meta.meta[cache + 1].head)} alt='image not loaded' />
+                    <img className='images' onClick={() => { submit(props.meta.meta[cache].idx, props.meta.meta[cache + 1].idx, 'choice', props.meta.meta[cache + 1].idx, props.userId); updates() }} src={img_html(props.meta.meta[cache + 1].panoid, props.meta.meta[cache + 1].head)} alt='image not loaded' />
                 </div>
             </Row>
     </div>

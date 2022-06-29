@@ -22,7 +22,7 @@ function ChildAssent() {
         </div>
         <div className="child-survey-button" style={{ display: isVisible ? "block" : "none" }}>
             <h4 className='h4-tag'>Do you want to complete the survey?</h4>
-            <a href="/survey" className="button-yes"> 
+            <a href="/images" className="button-yes"> 
                 <i class="fas fa-thumbs-up fa-3x"></i>
             </a>
             <a href="/" className="button-no">
