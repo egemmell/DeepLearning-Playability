@@ -25,9 +25,17 @@ def post_data():
     return jsonify({"step": "1"})
 
 
+@app.route("/post_credential", methods=["POST"])
+def post_credential():
+    print(json.loads(request.data))
+    print("This is from /post_credential!")
+    insert_cred(json.loads(request.data))
+    return (json.loads(request.data))
+
+
 @app.route("/get_data", methods=["GET"])
 def get_data():
-    print("THIS IS TRYING TO PRINT")
+    print("THIS IS TRYING TO PRINT from /get_data")
     meta = get_image()
     response = jsonify(meta)
     print(response)
@@ -71,6 +79,19 @@ def insert_rating(data):
                                           time varchar(100)
             )
         """
+    pg_cur.execute(sql, (json.dumps([data]),))
+    pg_conn.commit()
+
+
+def insert_cred(data):
+    sql = """insert into participants.credentials
+            select gender, age, postalcode, childage
+            from json_to_recordset(%s) x (gender varchar(45),
+                                            age integer,
+                                            postalcode varchar(20),
+                                            childage integer
+            )
+    """
     pg_cur.execute(sql, (json.dumps([data]),))
     pg_conn.commit()
 
