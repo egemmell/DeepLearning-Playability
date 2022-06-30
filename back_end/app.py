@@ -44,8 +44,8 @@ def get_data():
 
 
 dbconn = {
-    "database": "example",
-    "user": "ishmamchoudhury",
+    "database": 'postgres',
+    "user": 'postgres',
     "password": os.getenv("db_root_password"),
     "host": os.getenv("db_host"),
     "port": os.getenv("port"),
@@ -59,7 +59,7 @@ pg_cur = pg_conn.cursor()
 
 
 def get_image():
-    sql = """select * from images.preprocessing where exist=1 ORDER
+    sql = """select * from public.playscore ORDER
                         BY random() LIMIT 20
            """
     pg_cur.execute(sql)
@@ -69,7 +69,7 @@ def get_image():
 
 
 def insert_rating(data):
-    sql = """insert into users.perceptions
+    sql = """insert into public.perceptions
             select img_1, img_2, perception, choice, user_id, time
             from json_to_recordset(%s) x (img_1 varchar(60),
                                           img_2 varchar(60), 

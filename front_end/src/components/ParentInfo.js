@@ -4,7 +4,8 @@ require('dotenv').config({path: '../../.env'});
 
 
 function ParentInfo(props) {
-    const host = process.env.REACT_APP_BACK_END_HOST;
+    const host = window.REACT_APP_BACK_END_HOST;
+    const port = window.REACT_APP_BACK_END_PORT;
 
     const [gender, setGender] = useState('')
     const [age, setAge] = useState('')
@@ -14,7 +15,7 @@ function ParentInfo(props) {
     const navigate = useNavigate();
 
     const InsertArticle = (body) => {
-        return fetch('http://localhost:5000/post_credential', {
+        return fetch('http://' + host + ':' + port + '/post_credential', {
             'method': 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -43,6 +44,7 @@ function ParentInfo(props) {
 
     const rootNavigateImages = () => {
       // 👇️ navigate to /contacts
+      
       navigate('/images');
         // fetchImage: fetchImage(),
         // meta: meta,
@@ -52,7 +54,7 @@ function ParentInfo(props) {
 
 return (
     <div className='demographic'>
-        <form onSubmit={ handleSubmit && rootNavigateImages}>
+        <form onSubmit={rootNavigateImages}>
             <h2>Please fillout the demographics before you proceed to the survey</h2>
             <label className="demo-label" for="gender">Gender:</label>
             <input type="text" className='form-control' 
@@ -71,13 +73,11 @@ return (
             value={childage} onChange={(e)=>setChildAge(e.target.value)}/>
             {/* <button onClick={()=> {rootNavigateImages()}}>Next</button> */}
             {/* <a oncl></a> */}
-            <button > Next </button>
+            <button onClick={() => {handleSubmit(); rootNavigateImages()}}> Next </button>
         </form>
     </div>
 
 );
-
-
 
 };
 

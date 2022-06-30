@@ -24,7 +24,7 @@ SET default_with_oids = false;
 -- Name: perceptions; Type: TABLE; Schema: users; Owner: ishmamchoudhury
 --
 
-CREATE TABLE users.perceptions (
+CREATE TABLE public.perceptions (
     img_1 character varying(60),
     img_2 character varying(60),
     perception character varying(60),
@@ -34,15 +34,15 @@ CREATE TABLE users.perceptions (
 );
 
 
-ALTER TABLE users.perceptions OWNER TO ishmamchoudhury;
+ALTER TABLE public.perceptions OWNER TO postgres;
 
 --
 -- Data for Name: perceptions; Type: TABLE DATA; Schema: users; Owner: ishmamchoudhury
 --
 
-COPY users.perceptions (img_1, img_2, perception, choice, user_id, "time") FROM stdin;
-171616_d	289560_d	walkability	289560_d	d3ffb223-ff91-4506-82db-7788e76871b9	07/07/2021, 12:51:09 PM
-\.
+-- COPY users.perceptions (img_1, img_2, perception, choice, user_id, "time") FROM stdin;
+-- 171616_d	289560_d	walkability	289560_d	d3ffb223-ff91-4506-82db-7788e76871b9	07/07/2021, 12:51:09 PM
+-- \.
 
 
 --

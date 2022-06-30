@@ -40,31 +40,36 @@ function App() {
   // };
 
 
-  const host = process.env.REACT_APP_BACK_END_HOST;
-  const port = process.env.REACT_APP_BACK_END_PORT;
+  const host = window.REACT_APP_BACK_END_HOST;
+  const port = window.REACT_APP_BACK_END_PORT;
 
 
   const fetchImage = () => {
     const requestOptions = {
       method: 'GET',
       //header: { 'Content-Type': 'application/json'}
-      header: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://' + host + ':5000/get_data', 'Accept': 'application/json' }
+      header: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://' + host + ':' + port + '/get_data', 'Accept': 'application/json' }
     };
-    //fetch('http://' + host + ':' + port + '/get_data', requestOptions)
-    //this part was changed
     fetch('http://' + host + ':' + port + '/get_data', requestOptions)
+    //this part was changed
+    //fetch('http://127.0.0.1:5000/get_data', requestOptions)
       .then(response => response.json())
       .then(result => {
         setMeta({
           meta: result.map(item => ({
-            panoid: item[0],
-            month: item[1],
-            idx: item[2],
-            angle: item[3],
-            head: item[4],
-            cluster: item[5],
-            pp: item[6],
-            pp_float: item[8]
+            x: item[0],
+            idx: item[1],
+            panoid: item[2],
+            imguid: item[3],
+            month: item[4],
+            year: item[5],
+            angle: item[6],
+            playscore: item[7],
+            exist: item[8],
+            pp: item[9],
+            pp_float: item[10],
+            head: item[11],
+            clusters: item[12],
           }))
         });
       });

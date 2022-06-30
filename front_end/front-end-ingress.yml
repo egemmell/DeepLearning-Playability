@@ -1,0 +1,69 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: front-end-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+spec:
+  rules:
+  - host: www.pulsecanada.ca
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend: 
+          service:
+            name: backend-service
+            port:
+              number: 5000
+
+        
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-end
+  # namespace: front-end
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: front-end
+  template:
+    metadata:
+      labels:
+        app: front-end
+    spec:
+      containers:
+      - name: front-end
+        image: egemmell/playability-front-end
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: front-end-config-volume
+          mountPath: /usr/share/nginx/html/config.js
+          subPath: config.js
+          readOnly: true
+      volumes:
+        - name: front-end-config-volume
+          configMap:
+            name: front-end-config
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: front-end-svc
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    app: front-end

@@ -24,27 +24,30 @@ SET default_with_oids = false;
 -- Name: preprocessing; Type: TABLE; Schema: images; Owner: ishmamchoudhury
 --
 
-CREATE TABLE images.preprocessing (
+CREATE TABLE public.playscore (
+    x integer,
+    idx integer,
     panoid character varying(30),
+    imguid character varying(250),
     month integer,
-    idx character varying(30),
+    year integer,
     angle character varying(5),
-    head double precision,
-    clusters integer,
-    pp integer,
+    playscore character varying(5),
     exist integer,
-    pp_float double precision
+    pp integer,
+    pp_float double precision,
+    head double precision,
+    clusters integer
 );
 
-
-ALTER TABLE images.preprocessing OWNER TO ishmamchoudhury;
+ALTER TABLE public.playscore OWNER TO postgres;
 
 --
 -- Data for Name: preprocessing; Type: TABLE DATA; Schema: images; Owner: ishmamchoudhury
 --
 
 -- COPY images.preprocessing (panoid, month, idx, angle, head, clusters, pp, exist, pp_float) FROM stdin;
-COPY images.preprocessing FROM '/Users/ishmamchoudhury/Downloads/Personal/DL_ML/Playability/BCdata1.csv' DELIMITER as ',';
+-- COPY images.preprocessing FROM '/Users/ishmamchoudhury/Downloads/Personal/DL_ML/Playability/BCdata1.csv' DELIMITER as ',';
 --
 -- PostgreSQL database dump complete
 --
