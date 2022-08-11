@@ -3,8 +3,9 @@ import "../css/about.css";
 
 const About = () => {
 return (
+	<body className='aboutbody'>
 	<div class='infosheet'>
-		<form className='info-form' id='info-form'>
+		<form className='info-form'>
 		<h2>Assessing child and parent perceptions of neighbourhoods for children’s outdoor play 
 			Participant Information Sheet </h2>
 		<h4>
@@ -58,6 +59,7 @@ return (
 		<h4>Thank you for your interest in our study!</h4>
 		</form>
 	</div>
+	</body>
     
 );
 };

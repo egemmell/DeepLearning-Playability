@@ -1,0 +1,29 @@
+
+.contactbody {
+    background: url("../posts/stanley.jpeg");
+    /* min-height: 100vh; */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.contact-form{
+    width: 100%;
+    background-color: rgb(250, 250, 250);
+    max-width: 80%;
+    margin-top: 80px ;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 30px 20px;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+    overflow-wrap: break-word;
+    overflow: hidden;
+}
+
+p {
+    padding-left: 5px;
+}

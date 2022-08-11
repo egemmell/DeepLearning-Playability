@@ -1,14 +1,35 @@
-.infosheet{
-    align-items: center;
+
+.aboutbody {
+    /* background: url("../posts/stanley.jpeg"); */
+    /* The image used */
+    background-image: url("../posts/stanley.jpeg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
 }
 
-form{
+.infosheet{
+    align-items: center;
+
+}
+
+.info-form {
     background-color: rgb(250, 250, 250);
-    max-width: 1000px;
-    margin: 60px auto;
+    max-width: 80%;
+    margin-top: 80px;
+    margin-left: 10%;
+    margin-right: 10%;
     padding: 30px 20px;
     box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
     overflow-wrap: break-word;
+    overflow: hidden;
+    margin-bottom: 5px;
 }
 
 h2 {
@@ -29,7 +50,7 @@ h4 {
     color: rgb(0, 0, 0);
     display: block;
     font-family: "Open Sans", sans-serif;
-    font-size: 16px;
+    font-size: large;
     text-align: left;
     justify-content: center;
     margin-block-end: 14px;
@@ -47,7 +68,7 @@ p {
     color: rgb(0, 0, 0);
     display: block;
     font-family: "Open Sans", sans-serif;
-    font-size: 16px;
+    font-size: large;
     text-align: left;
     justify-content: center;
     margin-block-end: 14px;
@@ -55,6 +76,6 @@ p {
     margin-inline-end: 0px;
     margin-inline-start: 0px;
     margin-left: 20px;
-    width: 750px;
+    width: 96%;
     
 }

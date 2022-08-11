@@ -1,5 +1,6 @@
 .h4-tag {
-    padding-left: 310px;
+    /* margin-top: 100px; */
+    /* padding-left: 310px; */
     text-align: center;
 }
 
@@ -33,4 +34,8 @@
 
 .fa-3x {
     vertical-align: middle;
+}
+
+.ChildVideo {
+    margin: 120px;
 }

@@ -8,27 +8,26 @@ import os
 app = Flask(__name__)
 # CORS(app, support_credentials=True, resources={r"/*": {"origins": "*"}})
 # CORS(app, resources={r"/*": {"origins": [os.getenv("db_host") + ':3000']}})
-CORS(app, support_credentials=True, resources={r"/*": {"origins": "*"}})
-CORS(
-    app,
-    resources={r"/*": {"origins": "*",
-                       "allow_headers": "*", "expose_headers": "*"}},
-)
-CORS(app, resources={r"/*"})
+#CORS(app, support_credentials=True, resources={r"/*": {"origins": "*"}})
+CORS(app, resources={r"/*": {"origins": "*", "allow_headers": "*", "expose_headers": "*"}})
 app.config["DEBUG"] = True
 
 
 @app.route("/post_data", methods=["POST"])
 def post_data():
+    print("This is from /POST_DATA!")
     print(json.loads(request.data))
+    
     insert_rating(json.loads(request.data))
     return jsonify({"step": "1"})
 
 
 @app.route("/post_credential", methods=["POST"])
 def post_credential():
+    
+    print("This is from /POST_CREDENTIAL!")
     print(json.loads(request.data))
-    print("This is from /post_credential!")
+    
     insert_cred(json.loads(request.data))
     return (json.loads(request.data))
 
@@ -38,6 +37,7 @@ def get_data():
     print("THIS IS TRYING TO PRINT from /get_data")
     meta = get_image()
     response = jsonify(meta)
+    response.headers.add('Access-Control-Allow-Origin', '*')
     print(response)
 
     return response
@@ -48,7 +48,7 @@ dbconn = {
     "user": 'postgres',
     "password": os.getenv("db_root_password"),
     "host": os.getenv("db_host"),
-    "port": os.getenv("port"),
+    "port": os.getenv("db_port"), #changed from port to db_port
 }
 # dbconn = {'database': os.getenv("db"),
 #           'user': os.getenv("db_user"),
@@ -84,12 +84,13 @@ def insert_rating(data):
 
 
 def insert_cred(data):
-    sql = """insert into participants.credentials
-            select gender, age, postalcode, childage
-            from json_to_recordset(%s) x (gender varchar(45),
-                                            age integer,
-                                            postalcode varchar(20),
-                                            childage integer
+    sql = """insert into public.demographics
+            select user_id, age, parent_child, gender, fsa
+            from json_to_recordset(%s) x (user_id varchar(100),
+                                          age integer,
+                                          parent_child integer,
+                                          gender varchar(100),
+                                          fsa varchar(100)
             )
     """
     pg_cur.execute(sql, (json.dumps([data]),))
@@ -97,6 +98,6 @@ def insert_cred(data):
 
 
 if __name__ == "__main__":
-    app.run(host="localhost", port="5000")
+    app.run(host=os.getenv("app_host"), port="5000")
 
 # {console.log(meta.panoid)}

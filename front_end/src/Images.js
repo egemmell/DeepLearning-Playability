@@ -1,16 +1,20 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
-import { Container, Row, Col, Button } from 'react-bootstrap';
-import Contact from "./components/Contact"
-import Home from "./components/Home"
+import { Container, Row, Col, Button, CardColumns } from 'react-bootstrap';
+import "./css/images.css";
+import env from "react-dotenv";
 require('dotenv').config({path: '../.env'});
 
+
 function Images(props) {
-  const host = window.REACT_APP_BACK_END_HOST;
-  const port = window.REACT_APP_BACK_END_PORT;
+  const host = env.REACT_APP_BACK_END_HOST;
+  const port = env.REACT_APP_BACK_END_PORT;
+  // const host = '127.0.0.1';
+  // const port = '5000';
+  //const [api, setApi] = useState(window.REACT_APP_API_KEY);
   //this part was changed
-  const api = window.REACT_APP_API_KEY;
-  //const [api, setApi] = useState('AIzaSyALVKYf0D3HQzTj0sEuBJzeoqbo5tXqgTE');
+  console.log('HOST:', host)
+  const [api, setApi] = useState(env.REACT_APP_API_KEY);
 
   const [cache, setCache] = useState(0);
   //const [userId, setUserId] = useState(uuidv4());
@@ -59,27 +63,34 @@ function Images(props) {
 };
 
   return (
-    <div className="App">
-      <p>Images1</p>
-      <p>Images2</p>
+    <body className="imagesbody">
+    <div className="perception-test">
       {/* {console.log("If props works", props.meta)} */}
       {console.log("Just meta", meta, props.meta.meta[cache].panoid)}
       
-      <Row className='page'>
-                <div class="col-lg-4 offset-lg-1 col-md-4 offset-md-1 p-1">
-                    <img className='images' onClick={() => { submit(props.meta.meta[cache].idx, props.meta.meta[cache + 1].idx, 'choice', props.meta.meta[cache].idx, props.userId); updates() }} src={img_html(props.meta.meta[cache].panoid, props.meta.meta[cache].head)} alt='image not loaded' />
-                </div>
-                <div class="col-lg-2 offset-lg-0 col-md-2 offset-md-0">
-                    <Button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '1', props.userId); updates() }}>≈ Roughly Equal</Button>
-                    <Button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '0', props.userId); updates() }}>x Not Comparable</Button>
-                    <Button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '2', props.userId); updates() }}>Image not shown</Button>
-                </div>
-                
-                <div class="col-lg-4 offset-lg-0 col-md-4 p-1">
-                    <img className='images' onClick={() => { submit(props.meta.meta[cache].idx, props.meta.meta[cache + 1].idx, 'choice', props.meta.meta[cache + 1].idx, props.userId); updates() }} src={img_html(props.meta.meta[cache + 1].panoid, props.meta.meta[cache + 1].head)} alt='image not loaded' />
-                </div>
-            </Row>
+      <div className='page'>
+        {/* <div class="col-lg-4 offset-lg-1 col-md-4 offset-md-1 p-1"> */}
+        <div class="img1" id="img1">
+            <img className='images' onClick={() => { submit(props.meta.meta[cache].idx, props.meta.meta[cache + 1].idx, 'choice', props.meta.meta[cache].idx, props.userId); updates() }} src={img_html(props.meta.meta[cache].panoid, props.meta.meta[cache].head)} alt='image not loaded' />
+        </div>
+        
+        {/* <div class="col-lg-4 offset-lg-0 col-md-4 p-1"> */}
+        <div class="img2" id="img2">
+            <img className='images' onClick={() => { submit(props.meta.meta[cache].idx, props.meta.meta[cache + 1].idx, 'choice', props.meta.meta[cache + 1].idx, props.userId); updates() }} src={img_html(props.meta.meta[cache + 1].panoid, props.meta.meta[cache + 1].head)} alt='image not loaded' />
+        </div>
+      </div>
+
+      {/* <div class="col-lg-2 offset-lg-0 col-md-2 offset-md-0"> */}
+      <div class="actions">
+            <Button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '1', props.userId); updates() }}>≈ Roughly Equal</Button>
+            <Button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '0', props.userId); updates() }}>x Not Comparable</Button>
+            <Button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '2', props.userId); updates() }}>Image not shown</Button>
+        </div>
+        
     </div>
+    </body>
   );
 }
 export default Images;
+
+// docker run -it --network="host" --env db_host='127.0.0.1' --env db_port=5432 --env db_root_password='postgres' -p 5000:80 back-end:latest /bin/bash            

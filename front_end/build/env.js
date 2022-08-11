@@ -1,0 +1,5 @@
+window.env = {
+  "REACT_APP_API_KEY": "AIzaSyALVKYf0D3HQzTj0sEuBJzeoqbo5tXqgTE",
+  "REACT_APP_BACK_END_HOST": "159.203.50.249",
+  "REACT_APP_BACK_END_PORT": "5000"
+};

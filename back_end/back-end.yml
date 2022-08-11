@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: back-end
-        image: egemmell/playability-back-end
+        image: egemmell/example-back-end #changed the image name from egemmell/playability-back-end
         imagePullPolicy: Always
         ports:
         - containerPort: 5000

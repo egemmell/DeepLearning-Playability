@@ -1,34 +1,71 @@
 import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
+import data from "../sample_config.yaml";
+import env from "react-dotenv";
+import '../css/parentinfo.css'
 require('dotenv').config({path: '../../.env'});
 
 
 function ParentInfo(props) {
-    const host = window.REACT_APP_BACK_END_HOST;
-    const port = window.REACT_APP_BACK_END_PORT;
+    const host = env.REACT_APP_BACK_END_HOST;
+    const port = env.REACT_APP_BACK_END_PORT;
+    // const host = '127.0.0.1';
+    // const port = '5000';
+    console.log('TRHIS IS THE PORT', port)
+    // const host = process.env.REACT_APP_BACK_END_HOST;
+    // const port = process.env.REACT_APP_BACK_END_PORT;
+
+    // var readYaml = require('read-yaml');
+    // console.log("JJJ")
+    // readYaml('../sample_config.yaml', function(err, data) {
+    //     if (err) throw err;
+    //     console.log("hello", data);
+    // });
+
+    //https://github.com/wwilsman/js-yaml-loader/issues/16
+    //this above line suggest there is no yaml loader??
 
     const [gender, setGender] = useState('')
     const [age, setAge] = useState('')
-    const [postalcode, setPC] = useState('')
-    const [childage, setChildAge] = useState('')
+    const [fsa, setFSA] = useState('')
+    const [parent_child, setChildAge] = useState('')
 
     const navigate = useNavigate();
 
-    const InsertArticle = (body) => {
+    const InsertArticle = (user_id, age, parent_child, gender, fsa) => {
         return fetch('http://' + host + ':' + port + '/post_credential', {
-            'method': 'POST',
+            method: 'POST',
+            mode: 'cors',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body:JSON.stringify(body)
+            body:JSON.stringify(
+                {
+                    "user_id": user_id,
+                    "age": age,
+                    "parent_child": parent_child,
+                    "gender": gender,
+                    "fsa": fsa
+                }
+            )
         })
-        .then(response => response.json())
+        // need to edit this and change the response status: try catch blocks 
+        .then(response => {
+            if (response.status === 200){
+                console.log("res:200 THIS IS NAVIGATION", response.status)
+                navigate("/images");
+            }
+
+            
+            return
+        })
+           // response.json())
         .catch(error => console.log(error))
     }
     
     const insertArticle = () => {
-        InsertArticle({gender,age,postalcode,childage})
-        .then((response) => props.insertedArticle(response))
+        InsertArticle(props.userId , age, parent_child, gender, fsa)
+        .then((response) => {})
         .catch(error => console.log('error',error))
     }
 
@@ -36,44 +73,40 @@ function ParentInfo(props) {
         e.preventDefault()
         console.log("handlesumit")
         insertArticle()
-        setGender('')
         setAge('')
-        setPC('')
         setChildAge('')
+        setGender('')
+        setFSA('')
+        
     }
 
+    //navigate to images page
     const rootNavigateImages = () => {
-      // 👇️ navigate to /contacts
-      
       navigate('/images');
-        // fetchImage: fetchImage(),
-        // meta: meta,
-    
-    //{<Images fetchImage={fetchImage} meta={meta}/>}
     };
 
 return (
     <div className='demographic'>
-        <form onSubmit={rootNavigateImages}>
-            <h2>Please fillout the demographics before you proceed to the survey</h2>
-            <label className="demo-label" for="gender">Gender:</label>
-            <input type="text" className='form-control' 
-            value={gender} onChange={(e)=>setGender(e.target.value)}/><br></br>
+        <form onSubmit={handleSubmit}>
+        <h2>Please answer the following questions before you proceed to the survey: </h2>
 
-            <label className="demo-label" for="age">Age:</label>
+            <label className="demo-label" for="age">Parent age: </label>
             <input type="text" className='form-control'
             value={age} onChange={(e)=>setAge(e.target.value)}/><br></br>
 
-            <label className="demo-label" for="ps">Postal Code:</label>
+            <label className="demo-label" for="gender">Gender: </label>
+            <input type="text" className='form-control' 
+            value={gender} onChange={(e)=>setGender(e.target.value)}/><br></br>
+            
+            <label className="demo-label" for="ps">Postal Code: </label>
             <input type="text" className='form-control'
-            value={postalcode} onChange={(e)=>setPC(e.target.value)}/><br></br>
+            value={fsa} onChange={(e)=>setFSA(e.target.value)}/><br></br>
 
-            <label className="demo-label" for="childage">If your child is participating, how old is your child?</label>
+            <label className="demo-label" for="childage">How old is your youngest child? </label>
             <input type="text" className='form-control'
-            value={childage} onChange={(e)=>setChildAge(e.target.value)}/>
-            {/* <button onClick={()=> {rootNavigateImages()}}>Next</button> */}
-            {/* <a oncl></a> */}
-            <button onClick={() => {handleSubmit(); rootNavigateImages()}}> Next </button>
+            value={parent_child} onChange={(e)=>setChildAge(e.target.value)}/><br></br>
+
+            <button> Next </button>
         </form>
     </div>
 
