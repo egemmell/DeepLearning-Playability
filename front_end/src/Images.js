@@ -7,18 +7,12 @@ require('dotenv').config({path: '../.env'});
 
 
 function Images(props) {
-  const host = env.REACT_APP_BACK_END_HOST;
-  const port = env.REACT_APP_BACK_END_PORT;
-  // const host = '127.0.0.1';
-  // const port = '5000';
-  //const [api, setApi] = useState(window.REACT_APP_API_KEY);
-  //this part was changed
-  console.log('HOST:', host)
+  const host = process.env.REACT_APP_BACK_END_HOST;
+  const port = process.env.REACT_APP_BACK_END_PORT;
+  console.log('HOST from /images:', host)
+  
   const [api, setApi] = useState(env.REACT_APP_API_KEY);
-
   const [cache, setCache] = useState(0);
-  //const [userId, setUserId] = useState(uuidv4());
-////*** */
   const [meta, setMeta] = useState({ meta: 'aaa' });
 
   const date = () => {
@@ -28,7 +22,8 @@ function Images(props) {
   const submit = (img_1, img_2, perception, choice, user_id) => {
     const requestOptions = {
       method: 'POST',
-      header: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://' + host + ':' + port + '/post_data', 'Accept': 'application/json' },
+      //header: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://' + host + ':' + port + '/post_data', 'Accept': 'application/json' },
+      header: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Accept': 'application/json' },
       mode: 'cors',
       body: JSON.stringify(
         {
@@ -63,10 +58,11 @@ function Images(props) {
 };
 
   return (
-    <body className="imagesbody">
+    <div className="imagesbody">
     <div className="perception-test">
       {/* {console.log("If props works", props.meta)} */}
       {console.log("Just meta", meta, props.meta.meta[cache].panoid)}
+      <h3 id = "over10" style={{textAlign: 'center'}}>Click on the picture of the neighbourhood you think looks more playable for children.</h3>
       
       <div className='page'>
         {/* <div class="col-lg-4 offset-lg-1 col-md-4 offset-md-1 p-1"> */}
@@ -74,21 +70,21 @@ function Images(props) {
             <img className='images' onClick={() => { submit(props.meta.meta[cache].idx, props.meta.meta[cache + 1].idx, 'choice', props.meta.meta[cache].idx, props.userId); updates() }} src={img_html(props.meta.meta[cache].panoid, props.meta.meta[cache].head)} alt='image not loaded' />
         </div>
         
-        {/* <div class="col-lg-4 offset-lg-0 col-md-4 p-1"> */}
         <div class="img2" id="img2">
             <img className='images' onClick={() => { submit(props.meta.meta[cache].idx, props.meta.meta[cache + 1].idx, 'choice', props.meta.meta[cache + 1].idx, props.userId); updates() }} src={img_html(props.meta.meta[cache + 1].panoid, props.meta.meta[cache + 1].head)} alt='image not loaded' />
         </div>
       </div>
-
-      {/* <div class="col-lg-2 offset-lg-0 col-md-2 offset-md-0"> */}
+      <p className="ptag">If a picture is missing, please select the button below to continue.</p>
       <div class="actions">
-            <Button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '1', props.userId); updates() }}>≈ Roughly Equal</Button>
-            <Button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '0', props.userId); updates() }}>x Not Comparable</Button>
-            <Button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '2', props.userId); updates() }}>Image not shown</Button>
+        {/* <button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '1', props.userId); updates() }}>About the same</button> */}
+        {/* <button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '0', props.userId); updates() }}>I can't decide</button> */}
+        <button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '2', props.userId); updates() }}>Picture missing</button>
+      </div>
+      <div style={{textAlign: "right", marginRight: "20px", marginBottom:"20px", marginTop:"40px"}}>
+          <a href="/exit" className="exit-button">Exit</a>
         </div>
-        
     </div>
-    </body>
+    </div>
   );
 }
 export default Images;

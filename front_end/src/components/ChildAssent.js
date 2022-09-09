@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import video from '../videos/child-video2.mp4'
+import video from '../videos/Child_Assent_Video.mp4'
 import "../css/childassent.css"
 function ChildAssent() {
 
@@ -12,24 +12,23 @@ function ChildAssent() {
     } 
 
     return (
-    <div className="ChildVideo">
-        <h2>Thank you for visiting our survey!</h2>
-        <h4 className='h4-tag'>Please follow along the video below. This will help you understand the survey requirements.</h4>
-        <div className='video-file'>
-            <video onEnded={() => myCallback()} width="750" height="500" controls >
-            <source src={video} type="video/mp4"/>
-            </video>
+        <div className="ChildVideo">
+            <h3 className='h4-tag'>Please follow along with the video below to help you understand more about the survey and how to participate.</h3>
+            <div className='video-file'>
+                <video className='vid' onEnded={() => myCallback()}  controls >
+                <source src={video} type="video/mp4"/>
+                </video>
+            </div>
+            <div className="child-survey-button" style={{ display: isVisible ? "block" : "none" }}>
+                <h4 className='h4-tag'>Do you want to complete the survey?</h4>
+                <a href="/imagesChild" className="button-yes"> 
+                    <i class="fas fa-thumbs-up fa-2x"></i>
+                </a>
+                <a href="/" className="button-no">
+                    <i class="fa-solid fa-xmark fa-2x"></i>
+                </a> 
+            </div>
         </div>
-        <div className="child-survey-button" style={{ display: isVisible ? "block" : "none" }}>
-            <h4 className='h4-tag'>Do you want to complete the survey?</h4>
-            <a href="/images" className="button-yes"> 
-                <i class="fas fa-thumbs-up fa-3x"></i>
-            </a>
-            <a href="/" className="button-no">
-                 <i class="fa-solid fa-xmark fa-3x"></i>
-            </a> 
-        </div>
-    </div>
     );
 }
 

@@ -1,6 +1,4 @@
 .h4-tag {
-    /* margin-top: 100px; */
-    /* padding-left: 310px; */
     text-align: center;
 }
 
@@ -12,11 +10,11 @@
     font-family: inherit;
     font-size: 15px;
     text-decoration: none;
-    padding: 20px;
-    margin: 25px;
+    padding: 12px;
+    margin: 20px;
     position: relative;
-    right: 18px
-    /* right: 90px; */
+    right: 18px;
+       /* right: 90px; */
 }
 .button-no {
     border: 1.5px solid rgb(51, 0, 0);
@@ -26,16 +24,38 @@
     font-family: inherit;
     font-size: 15px;
     text-decoration: none;
-    padding: 20px;
-    margin: 25px;
+    padding: 12px;
+    margin: 20px;
     position: relative;
     right: 18px
 }
 
-.fa-3x {
+.fa-2x {
     vertical-align: middle;
 }
 
 .ChildVideo {
-    margin: 120px;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.video-file {
+    text-align: center;
+    margin-top: 2rem;
+    margin-left: 17.5%;
+    margin-right: 17.5%;
+    width:65%;
+    
+}
+
+.vid {
+    width: 100%;
+    height: 100%;
+}
+
+.child-survey-button {
+    text-align: center;
 }

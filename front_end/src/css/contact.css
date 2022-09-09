@@ -1,7 +1,5 @@
 
 .contactbody {
-    background: url("../posts/stanley.jpeg");
-    /* min-height: 100vh; */
     height: 100%;
 
     /* Center and scale the image nicely */
@@ -9,19 +7,25 @@
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
+    /* margin-top: -1rem; */
+    padding: 20px;
 }
 
-.contact-form{
+.info_contacts{
     width: 100%;
-    background-color: rgb(250, 250, 250);
+    background: #134E5E;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #9bebae81, #74c1d680);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #9bebae81, #74c1d680); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     max-width: 80%;
     margin-top: 80px ;
     margin-left: 10%;
     margin-right: 10%;
     padding: 30px 20px;
-    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 5px 20px rgba(70, 70, 70, 0.703);
     overflow-wrap: break-word;
     overflow: hidden;
+    border-radius: 10px;
 }
 
 p {

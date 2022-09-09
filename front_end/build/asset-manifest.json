@@ -1,26 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.6d5d5684.chunk.css",
-    "main.js": "/static/js/main.6696fa00.chunk.js",
-    "main.js.map": "/static/js/main.6696fa00.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.024db23f.js",
-    "runtime-main.js.map": "/static/js/runtime-main.024db23f.js.map",
-    "static/js/2.ce9a291a.chunk.js": "/static/js/2.ce9a291a.chunk.js",
-    "static/js/2.ce9a291a.chunk.js.map": "/static/js/2.ce9a291a.chunk.js.map",
-    "static/js/3.18b981d8.chunk.js": "/static/js/3.18b981d8.chunk.js",
-    "static/js/3.18b981d8.chunk.js.map": "/static/js/3.18b981d8.chunk.js.map",
+    "main.css": "/static/css/main.a26d4d77.chunk.css",
+    "main.js": "/static/js/main.e66622f3.chunk.js",
+    "main.js.map": "/static/js/main.e66622f3.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.435b5362.js",
+    "runtime-main.js.map": "/static/js/runtime-main.435b5362.js.map",
+    "static/js/2.32aeb6e3.chunk.js": "/static/js/2.32aeb6e3.chunk.js",
+    "static/js/2.32aeb6e3.chunk.js.map": "/static/js/2.32aeb6e3.chunk.js.map",
+    "static/js/3.f42489ce.chunk.js": "/static/js/3.f42489ce.chunk.js",
+    "static/js/3.f42489ce.chunk.js.map": "/static/js/3.f42489ce.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.6d5d5684.chunk.css.map": "/static/css/main.6d5d5684.chunk.css.map",
-    "static/js/2.ce9a291a.chunk.js.LICENSE.txt": "/static/js/2.ce9a291a.chunk.js.LICENSE.txt",
-    "static/media/child-video2.f5ee08fb.mp4": "/static/media/child-video2.f5ee08fb.mp4",
+    "static/css/main.a26d4d77.chunk.css.map": "/static/css/main.a26d4d77.chunk.css.map",
+    "static/js/2.32aeb6e3.chunk.js.LICENSE.txt": "/static/js/2.32aeb6e3.chunk.js.LICENSE.txt",
+    "static/media/Child_Assent_Video.dd27b1b2.mp4": "/static/media/Child_Assent_Video.dd27b1b2.mp4",
     "static/media/sample_config.6e936a91.yaml": "/static/media/sample_config.6e936a91.yaml",
-    "static/media/contact.css": "/static/media/stanley.061c6b5b.jpeg",
-    "static/media/ubc_logo.7014148d.jpg": "/static/media/ubc_logo.7014148d.jpg"
+    "static/media/ubc_vector1.a2df2266.svg": "/static/media/ubc_vector1.a2df2266.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.024db23f.js",
-    "static/js/2.ce9a291a.chunk.js",
-    "static/css/main.6d5d5684.chunk.css",
-    "static/js/main.6696fa00.chunk.js"
+    "static/js/runtime-main.435b5362.js",
+    "static/js/2.32aeb6e3.chunk.js",
+    "static/css/main.a26d4d77.chunk.css",
+    "static/js/main.e66622f3.chunk.js"
   ]
 }

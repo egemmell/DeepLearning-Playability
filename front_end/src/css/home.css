@@ -1,118 +1,60 @@
-
-/* body {
-    background-color: rgb(255, 177, 75);
-    min-height: 100vh;
-} */
-
-.homebody {
-    background: url("../posts/stanley.jpeg");
-    /* min-height: 100vh; */
+.disclamationBox {
     height: 100%;
-
-    /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
+    padding: 20px;
 }
 
-.consent-form {
+.form-container{
     width: 100%;
-    background-color: rgb(241, 238, 238);
+    /* background-color: rgb(255, 247, 235); */
+    background: #134E5E;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #9bebae81, #74c1d680);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #9bebae81, #74c1d680); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     max-width: 80%;
     margin-top: 80px ;
-    margin-left: 10%;
-    margin-right: 10%;
-    padding: 20px 20px;
-    box-shadow: 20px 50px 50px rgba(0, 0, 0, 0.5);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px 20px;
+    box-shadow: 5px 5px 20px rgba(70, 70, 70, 0.703);
     overflow-wrap: break-word;
     overflow: hidden;
+    border-radius: 10px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-/* .home--shell {
-    width: 100%;
-    height: 100%;
-    background-color: aqua;
-} */
-
-/* .consent-form {
-    margin-top: 80px;
-} */
-
-
-.top-p, h4 {
-    width: 96%;
-    margin-top: 20px;
-    vertical-align: middle;
-    font-size: large;
-    font-family: "Open Sans", sans-serif;
-}
-
-.top-1p {
-    font-size: large;
-    width: 100%;
-    padding-top: 30px;
-    text-align: left;
-    font-family: "Open Sans", sans-serif;
+h4 {
+    padding-top: 3rem;
 }
 
 .list {
-    text-align: left;
     padding-left: 2rem;
-    margin-top: 5px;
-    font-size: medium;
-    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
 }
 
-.survey {
-    font-size: large;
-    width: 80%;
-    text-align: center;
-    font-family: "Open Sans", sans-serif;
-}
-
-.bottom-h4 {
-    text-align: center;
-}
- 
 .link-to-surveys {
-    display: flex;
-    flex-direction: row;
-    margin-top: 50px;
-    justify-content: center; 
-}
-
-.parent-survey, .child-assent {
-    width: 100%;
-    text-align: center;
+    padding-top: 2rem;
 }
 
 .survey-button {
-    /* position: relative; */
-    /* right: 90px; */
-    border: 1.5px solid rgb(127, 210, 255);
-    background-color: rgb(196, 196, 196);
-    color: black;
-    padding: 2px;
-    border-radius: 2px;
-    font-family: inherit;
-    font-size: 15px;
+    font: bold 18px Arial;
     text-decoration: none;
-    width:50%;
-    margin-left:15%;
-    margin-right:30%;
+    background-color: #eff535;
+    color: #000000;
+    padding: 5px 8px 5px 8px;
+    border-radius: 5px;
+    border: 1px solid #624b00;
 }
 
-.survey-button1 {
-    border: 1.5px solid rgb(127, 210, 255);
-    background-color: rgb(196, 196, 196);
-    color: black;
-    padding: 2px;
-    border-radius: 2px;
-    font-family: inherit;
-    font-size: 15px;
+.exit-button {
+    font: bold 18px Arial;
     text-decoration: none;
-    width:50%;
-    margin-left:19%;
-    margin-right:25%;
+    background-color: #fe554f;
+    border: 1px solid rgb(71, 0, 0);
+    color: #fdfcf6;
+    padding: 4px 6px 4px 6px;
+    border-radius: 3px;
 }

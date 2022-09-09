@@ -4,14 +4,15 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from "./Home"
 import About from "./About";
 import Contact from "./Contact"
+import logo from "../videos/ubc_vector1.svg";
 
 export default function Navbar() {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
 
   return (
     <nav className="navigation">
-      <a href="#" className="brand-name">
-        Assessing Child and Parent Perception Study 
+      <a href="/home" className="brand-name">
+        <img src = {logo} alt="UBC logo" style={{height: "6rem"}}></img>
       </a>
       {/* hamburger hasnt been used yet, the work is to show a dropdown button when the size reduces */}
       <button
@@ -37,22 +38,19 @@ export default function Navbar() {
       <div
         className={
           isNavExpanded ? "navigation-menu expanded" : "navigation-menu"
-        }
+        } style={{paddingRight: "1rem"}}
       >
         {/* calling */}
       <ul>
-        <li>
-          <a href="/">Home</a>
+      <li>
+          <a style={{color: "black", fontSize: "20px"}} href="/home">Home</a>
         </li>
         <li>
-          <a href="/About">About</a>
+          <a style={{color: "black", fontSize: "20px"}} href="/About">About</a>
         </li>
         <li>
-          <a href="/Contact">Contact</a>
+          <a  style={{color: "black", fontSize: "20px"}} href="/Contact">Contacts</a>
         </li>
-        {/* <li>
-          <a href="/Images">Images</a>
-        </li> */}
       </ul>
       </div>
     </nav>

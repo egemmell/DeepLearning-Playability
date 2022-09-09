@@ -6,7 +6,9 @@ import ParentInfo from "./components/ParentInfo";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Navbar from "./components/Navbar";
-import logo from "./posts/ubc_logo.jpg";
+import ImagesChild from "./components/ImagesChild";
+import ExitResponse from "./components/ExitPage";
+
 import "./css/App.css";
 import { v4 as uuidv4 } from 'uuid';
 import env from "react-dotenv";
@@ -24,10 +26,11 @@ function App() {
   //const [show, setShow] = useState(false)
     // const host = window.REACT_APP_BACK_END_HOST;
     // const port = window.REACT_APP_BACK_END_PORT;
-    var host = env.REACT_APP_BACK_END_HOST;
-    var port = env.REACT_APP_BACK_END_PORT;
-    console.log(host,port)
-    // const host = '127.0.0.1';
+    const host = process.env.REACT_APP_BACK_END_HOST;
+    const port = process.env.REACT_APP_BACK_END_PORT;
+    
+    //const host = '127.0.0.1';
+    console.log(host,port, 'NEW3')
     // const port = '5000';
 
 
@@ -36,7 +39,9 @@ function App() {
       mode: 'cors',
       method: 'GET',
       //header: { 'Content-Type': 'application/json'}
-      header: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://' + host + ':' + port + '/get_data', 'Accept': 'application/json' }
+      // header: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://' + host + ':' + port + '/get_data', 'Accept': 'application/json' }
+      header: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Accept': 'application/json' }
+
     };
     fetch('http://' + host + ':' + port + '/get_data', requestOptions)
     //this part was changed
@@ -65,15 +70,11 @@ function App() {
 
   return (
     <div className="App">
-      <div class="UBC">
-        <img class= "UBClogo" src = {logo} alt="UBC logo" ></img>
-      </div>
-      {/* router routing to the DOM components */}
-      <Router>
       <Navbar/>
-      {/* <ModalManager closeFn={closeModal} modal={modalOpen}/> */}
+      <Router>
         <Routes>
-          <Route exact path='/' element={<Home/>}>
+          <Route path="/" element={<Home/>}></Route>
+          <Route exact path='/home' element={<Home/>}>
           </Route>
           <Route path='/about' element={<About/>}>
           </Route>
@@ -81,21 +82,16 @@ function App() {
           </Route>
           <Route exact path='/images' element={<Images fetchImage={fetchImage} meta={meta} userId={userId}/>}>
           </Route>
-          <Route exact path='/ChildAssent' element={<ChildAssent/>}>
+          <Route exact path='/imagesChild' element={<ImagesChild fetchImage={fetchImage} meta={meta} userId={userId}/>}>
+          </Route>
+          <Route exact path='/childAssent' element={<ChildAssent/>}>
           </Route>
           <Route exact path='/demographics' element={<ParentInfo userId={userId}/>}>
           </Route>
+          <Route exact path='/exit' element={<ExitResponse/>}>
+          </Route>
         </Routes>
       </Router>
-
-      {/* with setview. */}
-      {/* <p>perceptions</p> */}
-      {/* <button onClick={() => setView(0)}>contactInfo</button> */}
-      {/* <button onClick={() => { setView(1); fetchImage() }}>images</button> */}
-      {/* <button onClick={() => setView(2)}>home</button> */}
-      {/* { view === 0 ? <Contact/> : null} */}
-      {/* { view === 1 ? <Images setView={setView} fetchImage={fetchImage} meta={meta} /> : null} */}
-      {/* { view === 2 ? <Home setView={setView}/> : null} */}
     </div>
   );
 }

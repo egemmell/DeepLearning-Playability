@@ -7,8 +7,8 @@ require('dotenv').config({path: '../../.env'});
 
 
 function ParentInfo(props) {
-    const host = env.REACT_APP_BACK_END_HOST;
-    const port = env.REACT_APP_BACK_END_PORT;
+    const host = process.env.REACT_APP_BACK_END_HOST;
+    const port = process.env.REACT_APP_BACK_END_PORT;
     // const host = '127.0.0.1';
     // const port = '5000';
     console.log('TRHIS IS THE PORT', port)
@@ -88,25 +88,25 @@ function ParentInfo(props) {
 return (
     <div className='demographic'>
         <form onSubmit={handleSubmit}>
-        <h2>Please answer the following questions before you proceed to the survey: </h2>
+            <h2>Please answer the following questions before you proceed to the survey: </h2>
 
-            <label className="demo-label" for="age">Parent age: </label>
+            <label className="demo-label" for="age">Parent age: 
             <input type="text" className='form-control'
-            value={age} onChange={(e)=>setAge(e.target.value)}/><br></br>
-
-            <label className="demo-label" for="gender">Gender: </label>
-            <input type="text" className='form-control' 
-            value={gender} onChange={(e)=>setGender(e.target.value)}/><br></br>
+            value={age} onChange={(e)=>setAge(e.target.value)}/> </label>
             
-            <label className="demo-label" for="ps">Postal Code: </label>
+            <label className="demo-label" for="gender">Parent gender: 
+            <input type="text" className='form-control' 
+            value={gender} onChange={(e)=>setGender(e.target.value)}/> </label>
+            
+            <label className="demo-label" for="ps">First 3 digits of postal code:
             <input type="text" className='form-control'
-            value={fsa} onChange={(e)=>setFSA(e.target.value)}/><br></br>
+            value={fsa} onChange={(e)=>setFSA(e.target.value)}/>  </label>
 
-            <label className="demo-label" for="childage">How old is your youngest child? </label>
+            <label className="demo-label" for="childage">Age of youngest child
             <input type="text" className='form-control'
-            value={parent_child} onChange={(e)=>setChildAge(e.target.value)}/><br></br>
+            value={parent_child} onChange={(e)=>setChildAge(e.target.value)}/> </label>
 
-            <button> Next </button>
+            <button className='next-button'> Start Survey </button>
         </form>
     </div>
 
