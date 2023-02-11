@@ -1,31 +1,35 @@
-.demographic {
+.demographics {
     /* min-height: 100vh; */
     height: 100%;
-
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
-    /* margin-top: -1rem; */
     padding: 20px;
+    font-weight: bold;
 }
 
-form{
-    background: #134E5E;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #9bebae81, #74c1d680);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #9bebae81, #74c1d680); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-    max-width: 1000px;
+.parentInfo-form{
+    background: #d7e3fc;  /* fallback for old browsers */
+    max-width: 50rem;
     margin: 60px auto;
     margin-top: 100px;
-    padding: 30px 20px;
+    padding: 1rem 10rem;
     box-shadow: 5px 5px 20px rgba(70, 70, 70, 0.703);
-    overflow-wrap: break-word;
+    /* overflow-wrap: break-word; */
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
-label {
+.demo-label {
+    padding: 1rem;
+    margin: 1rem;
+    font-size: 24px;
+}
+
+/* label {
     font: semi-bold;
     font-size: 20px;
     display:flex;
@@ -36,12 +40,12 @@ label {
     line-height: 26px;
     margin-bottom: 15px;
     margin-left: 15px;
-}
-input {
+} */
+/* input {
     height: 20px;
     flex: 1 0 100px;
     margin-left: 30px;
-}
+} */
 
 .next-button {
     font: 18px Arial;
@@ -51,8 +55,23 @@ input {
     padding: 5px 8px 5px 8px;
     border-radius: 5px;
     border: solid rgb(89, 193, 146) 1px;
-    padding: 5px 8px 5px 8px;
-    border-radius: 5px;
-    margin-top: 20px;
+    padding: 10px 8px 10px 8px;
+    margin-top: 3rem;
     margin-left: 10px;
+}
+
+.demo-label-fsa {
+    padding-top: 0.5rem;
+    padding-right: 4rem;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.form-control-fsa {
+    margin: 0.5rem;
+    padding: 0.4rem;
+    margin-left: 15px;
+    border-radius: 5px;
+    
 }

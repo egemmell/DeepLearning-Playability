@@ -8,8 +8,7 @@ const About = () => {
         <form className="info-form">
           <h2>
             Assessing child and parent perceptions of neighbourhoods for
-            children’s outdoor play
-            <br></br> Participant Information Sheet
+            children’s outdoor play <br></br> Participant Information Sheet
           </h2>
           <h4>
             Thank you for your interest in our research study. This information
@@ -37,7 +36,6 @@ const About = () => {
             <br></br>
             (604)209-9233
           </p>
-
           <h3>What is the purpose of the study?</h3>
           <p>
             We are conducting this study to understand how parents of 0-12 year
@@ -45,7 +43,6 @@ const About = () => {
             play. Additionally, we are seeking to understand how children, 5-12
             years old view neighbourhood environments for play.
           </p>
-
           <h3>Why have I been invited?</h3>
           <p>
             This is an online study for parents of 0-12 year old children and
@@ -56,7 +53,6 @@ const About = () => {
             opportunity for your 5-12 year-old child to participate and share
             their views.
           </p>
-
           <h3>What happens if I decide to participate?</h3>
           <p>
             First, the survey will ask basic questions to help us understand
@@ -70,7 +66,6 @@ const About = () => {
             pairs as you wish, and exit the survey by clicking the “EXIT” button
             at any time.{" "}
           </p>
-
           <h3>What happens if I consent to my child’s participation?</h3>
           <p>
             You may also consent to your 5-12 year old child’s participation by
@@ -86,7 +81,6 @@ const About = () => {
             as many or as few image comparisons as they wish and click the
             “EXIT” button when finished.{" "}
           </p>
-
           <h3>Data Privacy</h3>
           <p>
             No personal data that could identify you or your child is collected
@@ -99,7 +93,6 @@ const About = () => {
             responses may be used in future research related to child and parent
             perspectives of urban neighbourhoods and outdoor play.
           </p>
-
           <h3>
             Are there any disadvantages, risks or benefits to participation?
           </h3>
@@ -111,7 +104,6 @@ const About = () => {
             for outdoor play may help cities to create environments that support
             child health and development.
           </p>
-
           <h3>How will results of the study be used?</h3>
           <p>
             We hope that this study will help cities to create healthier, more
@@ -122,13 +114,11 @@ const About = () => {
             research, and will use this data exclusively for non-commercial
             research on urban environments, health and health behaviours.
           </p>
-
           <h3>Who is funding this research?</h3>
           <p>
             This research is funded by the Wellcome Trust as part of the
             Pathways to Equitable Healthy Cities research collaboration.
           </p>
-
           <h3>
             Who can you contact if you have concerns or complaints about the
             study?
@@ -144,6 +134,57 @@ const About = () => {
             <a href="mailto:emily.gemmell@ubc.ca">emily.gemmell@ubc.ca</a>.
           </p>
           <br></br>
+
+          <h4 className="top-p">
+            By clicking the link below, you confirm the following statements and
+            consent to participate in this research.
+          </h4>
+          <li className="list">
+            <em>
+              I am a parent or guardian of a 0-12 year old child and live in
+              Canada.
+            </em>
+          </li>
+          <li className="list">
+            <em>I have reviewed the participant information sheet.</em>
+          </li>
+
+          <div className="link-to-surveys">
+            <div className="parent-survey" style={{ paddingBottom: "2rem" }}>
+              <p className="survey">
+                Yes, I would like to participate in this survey!
+              </p>
+
+              <div className="btn-align">
+                <a href="./demographics" className="survey-button">
+                  Start Survey
+                </a>
+              </div>
+            </div>
+
+            <div className="child-survey">
+              <p className="survey">
+                Yes, I consent to my 5-12 year old child participating in this
+                survey!
+              </p>
+              <div className="btn-align">
+                <a href="./ChildAssent" className="survey-button">
+                  Child Survey
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ paddingTop: "2rem", textAlign: "left" }}>
+            <h4 style={{ textAlign: "left", marginTop: "2rem" }}>
+              If you do not wish to participate, you may exit here.
+            </h4>
+            <div className="btn-align-e">
+              <a href="http://www.google.com" className="exit-button">
+                Exit Here
+              </a>
+            </div>
+          </div>
           <h4 style={{ paddingTop: "2rem", textAlign: "center" }}>
             Thank you for your interest in our study!
           </h4>

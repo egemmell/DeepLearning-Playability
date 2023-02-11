@@ -6,7 +6,7 @@
   background: -webkit-linear-gradient(to right, #ffe9cd, #f8cc92); 
   background: linear-gradient(to right, #ffe9cd, #f8cc92); */
 
-  background: #acc5bc;  /* fallback for old browsers */
+  background: #f2f6fa; /* fallback for old browsers */
 }
 
 .UBClogo {
@@ -20,4 +20,3 @@
 /* body, html {
   height: 100%;
 } */
-

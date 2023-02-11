@@ -29,3 +29,7 @@ server {
         root   /usr/share/nginx/html;
     }
 }
+
+#after updating the docker image
+#run this below command to refresh the deployment
+kubectl rollout restart deployment

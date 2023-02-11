@@ -36,7 +36,7 @@ function Images(props) {
         }
       )
     };
-    fetch('http://' + host + ':' + port + '/post_data', requestOptions)
+    fetch('https://flask.pulsecanada.ca:' + port + '/post_data', requestOptions)
       .then(response => response.json())
   };
 

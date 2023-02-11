@@ -4,7 +4,7 @@ import '../css/parentinfo.css'
 require('dotenv').config({path: '../../.env'});
 
 
-function ParentInfo(props) {
+function ChildInfo(props) {
     const host = process.env.REACT_APP_BACK_END_HOST;
     const port = process.env.REACT_APP_BACK_END_PORT;
     // const host = '127.0.0.1';
@@ -71,7 +71,7 @@ return (
         <form className="parentInfo-form" onSubmit={handleSubmit}>
             <h2>Please answer the following questions before you proceed to the survey: </h2>
 
-            Parent age: 
+            Child age: 
             <select className="demo-label" for="age" onChange={(e)=>setAge(e.target.value)}>
                 <option className='form-control'
                 value="">age</option> 
@@ -83,7 +83,7 @@ return (
                 value="Prefer not to answer">Prefer not to answer</option> 
             </select>
             
-            Parent gender identity: 
+            Child gender: 
             <select className="demo-label" for="gender" onChange={(e)=>setGender(e.target.value)}> 
                 <option className='form-control'
                 value="">gender</option> 
@@ -107,15 +107,11 @@ return (
             value={childAge} onChange={(e)=>setChildAge(e.target.value)}/> </label> */}
 
             <button className='next-button'> Start Survey </button>
-            <footer style={{ paddingTop: "50px", fontSize: "10px" }}>
-            Ethics ID # H22-00267
-          </footer>
         </form>
-        
     </div>
 
 );
 
 };
 
-export default ParentInfo;
+export default ChildInfo;
