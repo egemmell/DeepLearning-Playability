@@ -1,13 +1,14 @@
 * Changes to be updated for deployment
 
 droplet: 
-sudo -i -u postgres psql
+sudo -i -u postgres
 postgres=# CREATE DATABASE example;
 \q
 
 ssh user@IP.address
 sudo -i -u postgres psql example < into_droplet
-droplet$ psql -d example
+droplet$ su - postgres
+postgres$ psql -d example
 example=# \dn+
 
 ####POSTRGESQL commands in the promt####
@@ -33,3 +34,7 @@ server {
 #after updating the docker image
 #run this below command to refresh the deployment
 kubectl rollout restart deployment
+
+
+remove from remote
+rm ...

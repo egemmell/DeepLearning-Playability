@@ -32,6 +32,14 @@ def post_credential():
     insert_cred(json.loads(request.data))
     return (json.loads(request.data))
 
+@app.route("/post_credential_child", methods=["POST"])
+def post_credential_child():
+    
+    print("This is from /POST_CREDENTIAL_CHILD!")
+    print(json.loads(request.data))
+    
+    insert_cred_child(json.loads(request.data))
+    return (json.loads(request.data))
 
 @app.route("/get_data", methods=["GET"])
 def get_data():
@@ -92,7 +100,6 @@ def get_image():
         print("get_data from exception case")
     return data
 
-
 def insert_rating(data):
     try:
         pg_conn = psycopg2.connect(**dbconn)
@@ -128,17 +135,15 @@ def insert_rating(data):
         pg_conn.commit()
         pg_conn.close()
 
-
-
 def insert_cred(data):
     try:
         pg_conn = psycopg2.connect(**dbconn)
         pg_cur = pg_conn.cursor()
-        sql = """insert into public.demographics
+        sql = """insert into public.parentdemographics
                 select user_id, age, parent_child, gender, fsa
                 from json_to_recordset(%s) x (user_id varchar(100),
-                                            age integer,
-                                            parent_child integer,
+                                            age varchar(100),
+                                            parent_child varchar(100),
                                             gender varchar(100),
                                             fsa varchar(100)
                 )
@@ -146,15 +151,50 @@ def insert_cred(data):
         pg_cur.execute(sql, (json.dumps([data]),))
         pg_conn.commit()
         pg_conn.close()
+    
     except Exception as e:
         print(e)
         pg_conn = psycopg2.connect(**dbconn)
         pg_cur = pg_conn.cursor()
-        sql = """insert into public.demographics
+        sql = """insert into public.parentdemographics
                 select user_id, age, parent_child, gender, fsa
                 from json_to_recordset(%s) x (user_id varchar(100),
-                                            age integer,
-                                            parent_child integer,
+                                            age varchar(100),
+                                            parent_child varchar(100),
+                                            gender varchar(100),
+                                            fsa varchar(100)
+                )
+        """
+        pg_cur.execute(sql, (json.dumps([data]),))
+        pg_conn.commit()
+        pg_conn.close()
+
+def insert_cred_child(data):
+    try:
+        pg_conn = psycopg2.connect(**dbconn)
+        pg_cur = pg_conn.cursor()
+        sql = """insert into public.childdemographics
+                select user_id, age, gender, fsa
+                from json_to_recordset(%s) x (user_id varchar(100),
+                                            age varchar(100),
+                                            parent_child varchar(100),
+                                            gender varchar(100),
+                                            fsa varchar(100)
+                )
+        """
+        pg_cur.execute(sql, (json.dumps([data]),))
+        pg_conn.commit()
+        pg_conn.close()
+    
+    except Exception as e:
+        print(e)
+        pg_conn = psycopg2.connect(**dbconn)
+        pg_cur = pg_conn.cursor()
+        sql = """insert into public.childdemographics
+                select user_id, age, gender, fsa
+                from json_to_recordset(%s) x (user_id varchar(100),
+                                            age varchar(100),
+                                            parent_child varchar(100),
                                             gender varchar(100),
                                             fsa varchar(100)
                 )
@@ -166,4 +206,3 @@ def insert_cred(data):
 if __name__ == "__main__":
     app.run(host=os.getenv("app_host"), port="5000")
 
-# {console.log(meta.panoid)}

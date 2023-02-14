@@ -21,11 +21,11 @@ function ChildInfo(props) {
 
     const postDemographics = async (user_id, age, parent_child, gender, fsa) => {
         try {
-            const response = await fetch('https://flask.pulsecanada.ca:' + port + '/post_credential', {
+            const response = await fetch(' http://127.0.0.1:' + port + '/post_credential', {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',  "Access-Control-Allow-Origin": "*", 'Accept': 'application/json',
                 },
                 body: JSON.stringify(
                     {
@@ -39,7 +39,7 @@ function ChildInfo(props) {
             });
             if (response.status === 200) {
                 console.log("res:200 THIS IS NAVIGATION", response.status);
-                navigate("/images");
+                navigate("/imagesChild");
             }
             return;
         } catch (error) {
@@ -74,11 +74,23 @@ return (
             Child age: 
             <select className="demo-label" for="age" onChange={(e)=>setAge(e.target.value)}>
                 <option className='form-control'
-                value="">age</option> 
+                value="">Select option below</option> 
                 <option className='form-control'
-                value="18-50">18-50</option> 
+                value="5">5</option> 
                 <option className='form-control'
-                value="50+">50+</option> 
+                value="6">6</option> 
+                <option className='form-control'
+                value="7">7</option> 
+                <option className='form-control'
+                value="8">8</option> 
+                <option className='form-control'
+                value="9">9</option> 
+                <option className='form-control'
+                value="10">10</option> 
+                <option className='form-control'
+                value="11">11</option> 
+                <option className='form-control'
+                value="12">12</option> 
                 <option className='form-control'
                 value="Prefer not to answer">Prefer not to answer</option> 
             </select>
@@ -86,13 +98,13 @@ return (
             Child gender: 
             <select className="demo-label" for="gender" onChange={(e)=>setGender(e.target.value)}> 
                 <option className='form-control'
-                value="">gender</option> 
+                value="">Select option below</option>  
                 <option className='form-control'
-                value="Woman">Woman</option> 
+                value="Girl">Girl</option> 
                 <option className='form-control'
-                value="Man">Man</option> 
+                value="Boy">Boy</option> 
                 <option className='form-control'
-                value="Non-binary">Non-binary</option>
+                value="Non-binary person">Non-binary person</option>
                 <option className='form-control'
                 value="Prefer not to answer">Prefer not to answer</option> 
             </select>
@@ -107,6 +119,9 @@ return (
             value={childAge} onChange={(e)=>setChildAge(e.target.value)}/> </label> */}
 
             <button className='next-button'> Start Survey </button>
+            <footer style={{ paddingTop: "50px", fontSize: "10px" }}>
+            Ethics ID # H22-00267
+          </footer>
         </form>
     </div>
 

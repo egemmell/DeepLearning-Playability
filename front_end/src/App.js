@@ -40,10 +40,10 @@ function App() {
       header: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        Accept: "application/json",
+        'Accept': "application/json",
       },
     };
-    fetch("https://flask.pulsecanada.ca:" + port + "/get_data", requestOptions)
+    fetch("http://127.0.0.1:" + port + "/get_data", requestOptions)
       //this part was changed
       .then((response) => response.json())
       .then((result) => {

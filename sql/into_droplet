@@ -70,15 +70,23 @@ CREATE TABLE IF NOT EXISTS public.perceptions (
 );
 ALTER TABLE public.perceptions OWNER TO postgres;
 
-CREATE TABLE IF NOT EXISTS public.demographics (
+CREATE TABLE IF NOT EXISTS public.parentdemographics (
     user_id character varying(100),
-    age integer,
-    parent_child integer,
+    age character varying(100),
+    parent_child character varying(100),
     gender character varying(100),
     fsa character varying(100)
 );
-ALTER TABLE public.demographics OWNER TO postgres;
+ALTER TABLE public.parentdemographics OWNER TO postgres;
 
+CREATE TABLE IF NOT EXISTS public.childdemographics (
+    user_id character varying(100),
+    age character varying(100),
+    parent_child character varying(100),
+    gender character varying(100),
+    fsa character varying(100)
+);
+ALTER TABLE public.childdemographics OWNER TO postgres;
 
 --
 -- Data for Name: preprocessing; Type: TABLE DATA; Schema: images; Owner: ishmamchoudhury

@@ -24,15 +24,23 @@ SET default_with_oids = false;
 -- Name: demographics; Type: TABLE; Schema: public; Owner: postgress
 --
 
-CREATE TABLE public.demographics (
+CREATE TABLE public.parentdemographics (
     user_id character varying(100),
-    age integer,
-    parent_child integer,
+    age character varying(100),
+    parent_child character varying(100),
     gender character varying(100),
     fsa character varying(100),
 );
 
-ALTER TABLE public.demographics OWNER TO postgres;
+CREATE TABLE public.childdemographics (
+    user_id character varying(100),
+    age character varying(100),
+    gender character varying(100),
+    fsa character varying(100),
+);
+
+ALTER TABLE public.parentdemographics OWNER TO postgres;
+ALTER TABLE public.childdemographics OWNER TO postgres;
 
 --
 -- Data for Name: perceptions; Type: TABLE DATA; Schema: users; Owner: ishmamchoudhury

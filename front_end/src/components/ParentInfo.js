@@ -21,11 +21,11 @@ function ParentInfo(props) {
 
     const postDemographics = async (user_id, age, parent_child, gender, fsa) => {
         try {
-            const response = await fetch('https://flask.pulsecanada.ca:' + port + '/post_credential', {
+            const response = await fetch('http://127.0.0.1:' + port + '/post_credential', {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
-                    'Content-Type': 'application/json'
+                     'Content-Type': 'application/json',  "Access-Control-Allow-Origin": "*", 'Accept': 'application/json',
                 },
                 body: JSON.stringify(
                     {
@@ -74,31 +74,39 @@ return (
             Parent age: 
             <select className="demo-label" for="age" onChange={(e)=>setAge(e.target.value)}>
                 <option className='form-control'
-                value="">age</option> 
+                value="">Select option below</option> 
                 <option className='form-control'
-                value="18-50">18-50</option> 
+                value="18-24">18-24</option>
                 <option className='form-control'
-                value="50+">50+</option> 
+                value="25-30">25-30</option>
+                <option className='form-control'
+                value="31-34">31-34</option> 
+                <option className='form-control'
+                value="35-40">35-40</option> 
+                <option className='form-control'
+                value="41-44">41-44</option>
+                <option className='form-control'
+                value="45+">45+</option>
                 <option className='form-control'
                 value="Prefer not to answer">Prefer not to answer</option> 
             </select>
             
-            Parent gender identity: 
+            Parent gender: 
             <select className="demo-label" for="gender" onChange={(e)=>setGender(e.target.value)}> 
                 <option className='form-control'
-                value="">gender</option> 
+                value="">Select option below</option> 
                 <option className='form-control'
                 value="Woman">Woman</option> 
                 <option className='form-control'
                 value="Man">Man</option> 
                 <option className='form-control'
-                value="Non-binary">Non-binary</option>
+                value="Non-binary person">Non-binary person</option>
                 <option className='form-control'
                 value="Prefer not to answer">Prefer not to answer</option> 
             </select>
             
             <label className="demo-label-fsa" for="ps">First 3 digits of postal code:
-                <input type="text" className='form-control-fsa'
+                <input type="text" className='form-control-fsa' maxlength="3"
                 value={fsa} onChange={(e)=>setFSA(e.target.value)}/>
             </label>
 

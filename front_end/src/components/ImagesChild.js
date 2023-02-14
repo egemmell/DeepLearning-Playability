@@ -83,13 +83,14 @@ function ImagesChild(props) {
       </div>
       <p className="ptag">If a picture is missing, please select the button below to continue.</p>
       <div class="actions">
-        {/* <button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '1', props.userId); updates() }}>About the same</button> */}
-        {/* <button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '0', props.userId); updates() }}>I can’t decide</button> */}
         <button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '2', props.userId); updates() }}>Picture missing</button>
       </div>
-      <div style={{textAlign: "right", marginRight: "20px", marginBottom:"20px", marginTop:"40px"}}>
+      <div style={{textAlign: "right", marginRight: "20px", marginBottom:"20px", marginTop:"5px"}}>
           <a href="/exit" className="exit-button">Exit</a>
       </div>
+      <footer style={{ paddingTop: "10px", paddingLeft: "20px", paddingBottom: "10px", fontSize: "10px" }}>
+            Ethics ID # H22-00267
+      </footer>
     </div>
     </div>
   );

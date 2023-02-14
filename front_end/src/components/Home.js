@@ -23,9 +23,8 @@ function Home() {
         </p>
 
         <p className="top-p">
-          We want to understand how parents and children view different
-          neighbourhood environments for outdoor play. We hope this information
-          can help cities to design neighbourhoods that support kids’ mental,
+          Understanding how parents and children view different
+          neighbourhoods can help cities to design neighbourhoods that support kids’ mental,
           physical and social well-being.{" "}
         </p>
 

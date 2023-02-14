@@ -36,7 +36,7 @@ function Images(props) {
         }
       )
     };
-    fetch('https://flask.pulsecanada.ca:' + port + '/post_data', requestOptions)
+    fetch('http://' + host + ':' + port + '/post_data', requestOptions)
       .then(response => response.json())
   };
 
@@ -78,11 +78,14 @@ function Images(props) {
       <div class="actions">
         {/* <button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '1', props.userId); updates() }}>About the same</button> */}
         {/* <button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '0', props.userId); updates() }}>I can't decide</button> */}
-        <button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '2', props.userId); updates() }}>Picture missing</button>
+        <button variant="outline-secondary" className='button' size='lg' block onClick={() => { submit(props.meta.meta[cache][2], props.meta.meta[cache + 1][2], 'choice', '0', props.userId); updates() }}>Picture missing</button>
       </div>
       <div style={{textAlign: "right", marginRight: "20px", marginBottom:"20px", marginTop:"40px"}}>
           <a href="/exit" className="exit-button">Exit</a>
-        </div>
+      </div>
+      <footer style={{ paddingTop: "10px", paddingLeft: "20px", paddingBottom: "10px", fontSize: "10px" }}>
+        Ethics ID # H22-00267
+      </footer>
     </div>
     </div>
   );
