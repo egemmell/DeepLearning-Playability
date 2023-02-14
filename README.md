@@ -1,6 +1,7 @@
-# Web App with Postgres Database using Flask + React.
-In this example, we will create a web app which displays two images side by side and the user is asked to select one, updating a database.
-For more detail: https://medium.com/@emilymuller1991/developing-a-web-app-with-postgres-database-using-flask-react-9c297606aed9.
+# Creating and Deploying the Web-App using Flask, React and Postgresql
+In this section, we will go through the necessary steps for creating a web-application using React front-end and Flask back-end. Our database of images and perception rating will be hosted in postgres. After which, we will deploy the entire app using Digital Ocean Droplet and Kubernetes services.
+
+
 
 ## Summary 
 1. Postgres Database
