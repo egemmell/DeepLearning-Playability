@@ -7,10 +7,6 @@ require('dotenv').config({path: '../../.env'});
 function ParentInfo(props) {
     const host = process.env.REACT_APP_BACK_END_HOST;
     const port = process.env.REACT_APP_BACK_END_PORT;
-    // const host = '127.0.0.1';
-    // const port = '5000';
-    // const host = process.env.REACT_APP_BACK_END_HOST;
-    // const port = process.env.REACT_APP_BACK_END_PORT;
 
     const [gender, setGender] = useState('')
     const [age, setAge] = useState('')
@@ -21,7 +17,7 @@ function ParentInfo(props) {
 
     const postDemographics = async (user_id, age, parent_child, gender, fsa) => {
         try {
-            const response = await fetch('http://127.0.0.1:' + port + '/post_credential', {
+            const response = await fetch('https://flask.pulsecanada.ca:' + port + '/post_credential', {
                 method: 'POST',
                 mode: 'cors',
                 headers: {

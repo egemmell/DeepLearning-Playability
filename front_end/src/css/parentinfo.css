@@ -29,24 +29,6 @@
     font-size: 24px;
 }
 
-/* label {
-    font: semi-bold;
-    font-size: 20px;
-    display:flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    text-align: right;
-    width: 500px;
-    line-height: 26px;
-    margin-bottom: 15px;
-    margin-left: 15px;
-} */
-/* input {
-    height: 20px;
-    flex: 1 0 100px;
-    margin-left: 30px;
-} */
-
 .next-button {
     font: 18px Arial;
     text-decoration: none;
@@ -74,4 +56,10 @@
     margin-left: 15px;
     border-radius: 5px;
     
+}
+
+@media screen and (max-width: 680px) {
+    .parentInfo-form {
+        padding: 1rem 1rem;
+    }
 }

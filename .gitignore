@@ -6,4 +6,7 @@ front_end/package-lock.json
 front_end/config.yaml
 front_end/cm.yaml
 back_end/back-end.yml
+NOTES.txt
+sql/images
+sql/demographics
 

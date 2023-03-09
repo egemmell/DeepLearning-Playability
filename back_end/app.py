@@ -16,41 +16,30 @@ app.config["DEBUG"] = True
 
 @app.route("/post_data", methods=["POST"])
 def post_data():
-    print("This is from /POST_DATA!")
-    print(json.loads(request.data))
-    
     insert_rating(json.loads(request.data))
     return jsonify({"step": "1"})
 
 
 @app.route("/post_credential", methods=["POST"])
 def post_credential():
-    
-    print("This is from /POST_CREDENTIAL!")
-    print(json.loads(request.data))
-    
     insert_cred(json.loads(request.data))
     return (json.loads(request.data))
 
+
 @app.route("/post_credential_child", methods=["POST"])
 def post_credential_child():
-    
-    print("This is from /POST_CREDENTIAL_CHILD!")
-    print(json.loads(request.data))
-    
     insert_cred_child(json.loads(request.data))
     return (json.loads(request.data))
 
+
 @app.route("/get_data", methods=["GET"])
 def get_data():
-    print("THIS IS TRYING TO PRINT from /get_data")
     meta = get_image()
     response = jsonify(meta)
-    #response.headers['Access-Control-Allow-Origin'] = '*'
+
     response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Headers']= "*"
-    response.headers['Access-Control-Allow-Methods']= "*"
-    print(response.headers)
+    response.headers['Access-Control-Allow-Headers'] = "*"
+    response.headers['Access-Control-Allow-Methods'] = "*"
 
     return response
 
@@ -60,7 +49,7 @@ dbconn = {
     "user": 'postgres',
     "password": os.getenv("db_root_password"),
     "host": os.getenv("db_host"),
-    "port": os.getenv("db_port"), #changed from port to db_port
+    "port": os.getenv("port"),  # changed from port to db_port
 }
 # dbconn = {'database': os.getenv("db"),
 #           'user': os.getenv("db_user"),
@@ -72,12 +61,9 @@ dbconn = {
 
 def get_image():
     try:
-        print(os.getenv("db_host"))
-        print(os.getenv("db_port"))
         pg_conn = psycopg2.connect(**dbconn)
-        
+
         pg_cur = pg_conn.cursor()
-        print(pg_conn.get_dsn_parameters())
         sql = """select * from public.playscore ORDER
                             BY random() LIMIT 20
             """
@@ -85,9 +71,7 @@ def get_image():
         data = pg_cur.fetchall()
         pg_conn.commit()
         pg_conn.close()
-        print("get_data without exception")
     except (Exception, Error) as e:
-        print(e)
         pg_conn = psycopg2.connect(**dbconn)
         pg_cur = pg_conn.cursor()
         sql = """select * from public.playscore ORDER
@@ -97,8 +81,9 @@ def get_image():
         data = pg_cur.fetchall()
         pg_conn.commit()
         pg_conn.close()
-        print("get_data from exception case")
+
     return data
+
 
 def insert_rating(data):
     try:
@@ -118,7 +103,6 @@ def insert_rating(data):
         pg_conn.commit()
         pg_conn.close()
     except Exception as e:
-        print(e)
         pg_conn = psycopg2.connect(**dbconn)
         pg_cur = pg_conn.cursor()
         sql = """insert into public.perceptions
@@ -134,6 +118,7 @@ def insert_rating(data):
         pg_cur.execute(sql, (json.dumps([data]),))
         pg_conn.commit()
         pg_conn.close()
+
 
 def insert_cred(data):
     try:
@@ -151,9 +136,8 @@ def insert_cred(data):
         pg_cur.execute(sql, (json.dumps([data]),))
         pg_conn.commit()
         pg_conn.close()
-    
+
     except Exception as e:
-        print(e)
         pg_conn = psycopg2.connect(**dbconn)
         pg_cur = pg_conn.cursor()
         sql = """insert into public.parentdemographics
@@ -168,6 +152,7 @@ def insert_cred(data):
         pg_cur.execute(sql, (json.dumps([data]),))
         pg_conn.commit()
         pg_conn.close()
+
 
 def insert_cred_child(data):
     try:
@@ -185,9 +170,8 @@ def insert_cred_child(data):
         pg_cur.execute(sql, (json.dumps([data]),))
         pg_conn.commit()
         pg_conn.close()
-    
+
     except Exception as e:
-        print(e)
         pg_conn = psycopg2.connect(**dbconn)
         pg_cur = pg_conn.cursor()
         sql = """insert into public.childdemographics
@@ -203,6 +187,6 @@ def insert_cred_child(data):
         pg_conn.commit()
         pg_conn.close()
 
+
 if __name__ == "__main__":
     app.run(host=os.getenv("app_host"), port="5000")
-

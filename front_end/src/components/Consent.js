@@ -168,7 +168,7 @@ const About = () => {
                 survey!
               </p>
               <div className="btn-align">
-                <a href="./ChildAssent" className="survey-button">
+                <a href="./childinfo" className="survey-button">
                   Child Survey
                 </a>
               </div>

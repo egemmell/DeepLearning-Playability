@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Images from "./Images";
 import Home from "./components/Home";
 import ParentInfo from "./components/ParentInfo";
@@ -12,7 +12,6 @@ import ExitResponse from "./components/ExitPage";
 
 import "./css/App.css";
 import { v4 as uuidv4 } from "uuid";
-import env from "react-dotenv";
 import ChildAssent from "./components/ChildAssent";
 import ChildInfo from "./components/ChildInfo";
 require("dotenv").config({ path: "../.env" });
@@ -23,27 +22,17 @@ function App() {
   useEffect(() => {
     fetchImage();
   }, []);
-  //const [show, setShow] = useState(false)
-  // const host = window.REACT_APP_BACK_END_HOST;
-  // const port = window.REACT_APP_BACK_END_PORT;
   const host = process.env.REACT_APP_BACK_END_HOST;
   const port = process.env.REACT_APP_BACK_END_PORT;
-
-  //const host = '127.0.0.1';
-  console.log(host, port, "NEW3");
-  // const port = '5000';
 
   const fetchImage = () => {
     const requestOptions = {
       mode: "cors",
       method: "GET",
-      header: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        'Accept': "application/json",
-      },
+      header: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*', 'Accept': 'application/json'}
     };
-    fetch("http://127.0.0.1:" + port + "/get_data", requestOptions)
+    console.log("Fetching")
+    fetch("https://flask.pulsecanada.ca:" + port + "/get_data", requestOptions)
       //this part was changed
       .then((response) => response.json())
       .then((result) => {
@@ -64,7 +53,11 @@ function App() {
             clusters: item[12],
           })),
         });
-      });
+      })
+      .catch((error) => {
+        console.log("Api call error",error);
+        alert(error.message);
+     });
   };
 
   return (

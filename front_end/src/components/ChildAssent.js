@@ -6,7 +6,6 @@ function ChildAssent() {
     const [isVisible, setIsVisible] = useState(false)
 
     const myCallback = () => {
-        (console.log("Video ended"));
         setIsVisible(true)
 
     } 
@@ -21,7 +20,7 @@ function ChildAssent() {
             </div>
             <div className="child-survey-button" style={{ display: isVisible ? "block" : "none" }}>
                 <h4 className='h4-tag'>Do you want to complete the survey?</h4>
-                <a href="/childinfo" className="button-yes"> 
+                <a href="/imagesChild" className="button-yes"> 
                     <i class="fas fa-thumbs-up fa-2x"></i>
                 </a>
                 <a href="/" className="button-no">

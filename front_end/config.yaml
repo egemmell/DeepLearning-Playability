@@ -1,9 +1,9 @@
---- 
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: front-end-config
 data:
   REACT_APP_API_KEY: AIzaSyALVKYf0D3HQzTj0sEuBJzeoqbo5tXqgTE
-  REACT_APP_BACK_END_HOST: 174.138.115.143
+  REACT_APP_BACK_END_HOST: 157.230.71.145
   REACT_APP_BACK_END_PORT: 5000

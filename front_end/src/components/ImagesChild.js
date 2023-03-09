@@ -9,16 +9,9 @@ require('dotenv').config({path: '../.env'});
 function ImagesChild(props) {
   const host = process.env.REACT_APP_BACK_END_HOST;
   const port = process.env.REACT_APP_BACK_END_PORT;
-  // const host = '127.0.0.1';
-  // const port = '5000';
-  //const [api, setApi] = useState(window.REACT_APP_API_KEY);
-  //this part was changed
-  console.log('HOST:', host)
   const [api, setApi] = useState(env.REACT_APP_API_KEY);
 
   const [cache, setCache] = useState(0);
-  //const [userId, setUserId] = useState(uuidv4());
-////*** */
   const [meta, setMeta] = useState({ meta: 'aaa' });
 
   const date = () => {
@@ -43,14 +36,13 @@ function ImagesChild(props) {
         }
       )
     };
-    fetch('http://' + host + ':' + port + '/post_data', requestOptions)
+    fetch('https://flask.pulsecanada.ca:' + port + '/post_data', requestOptions)
       .then(response => response.json())
   };
 
   // render image using API
   const img_html = (panoid, head) => {
     var heady = Math.round(head);
-    console.log(panoid)
     return `https://maps.googleapis.com/maps/api/streetview?size=640x640&pano=${panoid}&fov=120&heading=${heady}&pitch=0&key=${api}`
   };
 
@@ -67,8 +59,6 @@ function ImagesChild(props) {
   return (
     <div className="imagesbody">
     <div className="perception-test">
-      {/* {console.log("If props works", props.meta)} */}
-      {console.log("Just meta", meta, props.meta.meta[cache].panoid)}
       <h3 id='over10' style={{textAlign: 'center'}}>Click on the picture of the neighbourhood you would rather play in.</h3>
       <div className='page'>
         

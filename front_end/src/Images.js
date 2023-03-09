@@ -9,7 +9,7 @@ require('dotenv').config({path: '../.env'});
 function Images(props) {
   const host = process.env.REACT_APP_BACK_END_HOST;
   const port = process.env.REACT_APP_BACK_END_PORT;
-  console.log('HOST from /images:', host)
+  // console.log('HOST from /images:', host)
   
   const [api, setApi] = useState(env.REACT_APP_API_KEY);
   const [cache, setCache] = useState(0);
@@ -36,7 +36,7 @@ function Images(props) {
         }
       )
     };
-    fetch('http://' + host + ':' + port + '/post_data', requestOptions)
+    fetch('https://flask.pulsecanada.ca:' + port + '/post_data', requestOptions)
       .then(response => response.json())
   };
 
