@@ -3,7 +3,7 @@ In this repository, we adapt code from Muller (https://emilymuller1991.github.io
 
 
 
-## Summary 
+## Summary of steps 
 1. Postgres Database
 2. Flask API for back-end
 3. React for front-end
