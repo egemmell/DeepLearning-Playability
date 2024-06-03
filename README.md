@@ -1,5 +1,5 @@
 # Creating and Deploying the Web-App using Flask, React and Postgresql
-In this section, we will go through the necessary steps for creating a web-application using React front-end and Flask back-end. Our database of images and perception rating will be hosted in postgres. After which, we will deploy the entire app using Digital Ocean Droplet and Kubernetes services.
+In this section, we adapt code from Muller to create a web application with a React front-end and Flask back-end. Our database of images and perception rating will be hosted in postgres and we will deploy the app using Digital Ocean Droplet and Kubernetes services.
 
 
 
